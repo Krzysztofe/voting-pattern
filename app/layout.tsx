@@ -29,7 +29,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-zinc-100 text-zinc-500 min-h-screen`}
       >
-        <Wrapper>{children}</Wrapper>
+        <main>
+          <Wrapper>{children}</Wrapper>
+        </main>
       </body>
     </html>
   );
