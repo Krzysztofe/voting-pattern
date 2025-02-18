@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        accent: "#2569F4",
+        accent: "rgb(37, 105, 244)",
         accent_light: "#4683FF",
         primary_dark: "#CCDDFF",
         primary: "#E0EAFF",
@@ -23,10 +23,10 @@ export default {
         danger: "#ff0101",
       },
       fontSize: {
-        xs: "0.75rem", // 12px
-        sm: "0.875rem", // 14px
-        base: "1rem", // 16px
-        lg: "1.3rem", // 18px
+        xs: "0.75rem",
+        sm: "0.875rem",
+        base: "1rem",
+        lg: "1.3rem",
         xl: "1.8rem",
         "2xl": "1.5rem", // 24px
         "3xl": "1.875rem", // 30px
@@ -37,5 +37,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 } satisfies Config;

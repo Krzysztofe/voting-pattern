@@ -3,45 +3,46 @@ import React from "react";
 const FormToVote = () => {
   return (
     <form className="mx-auto flex flex-col gap-3">
-      <div>
-        <div className="text-lg">Kandydatury</div>
+      <div className="">
+        <div className="text-lg text-accent">Kandydatury</div>
         <div className="form-control">
-          <label className="label cursor-pointer">
+          <label className="label cursor-pointer text-base">
             <input
               type="radio"
               name="radio-10"
               className="radio checked:bg-red-500"
               defaultChecked
             />
-            <span className="label-text">Blanka Hasterok</span>
+            <span>Blanka Hasterok</span>
           </label>
         </div>
         <div className="form-control">
-          <label className="label cursor-pointer">
+          <label className="label cursor-pointer text-base">
             <input
               type="radio"
               name="radio-10"
               className="radio checked:bg-blue-500"
               defaultChecked
             />
-            <span className="label-text">Monika Koralewska</span>
+            <span>Monika Koralewska</span>
           </label>
         </div>
         <div className="form-control">
-          <label className="label cursor-pointer">
+          <label className="label cursor-pointer text-base">
             <input
               type="radio"
               name="radio-10"
               className="radio checked:bg-blue-500"
               defaultChecked
             />
-            <span className="label-text">Maria Malinowska</span>
+            <span>Maria Malinowska</span>
           </label>
         </div>
-        <div>error</div>
+        <div className="text-xs text-danger">error</div>
       </div>
+
       <div className="">
-        <label htmlFor="" className="label">
+        <label htmlFor="" className="text-lg  text-accent">
           Podaj numer identyfikacyjny
         </label>
         <input
@@ -51,10 +52,10 @@ const FormToVote = () => {
           placeholder="Nr"
           name="userName"
         />
-        <div>error</div>
+        <div className="text-xs  text-danger">error</div>
       </div>
 
-      <button className="bg-slate-600 text-white px-2 block ml-auto">
+      <button className="bg-accent text-white px-2 block ml-auto">
         Zagłosuj
       </button>
     </form>
