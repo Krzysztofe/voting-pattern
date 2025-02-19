@@ -21,6 +21,7 @@ export default {
         black_opacity: "rgba(0,0,0,0.4)",
         td_red: "rgb(226, 0, 34, 0.1)",
         danger: "#ff0101",
+        bacground: "rgb(244, 244, 245)",
       },
       fontSize: {
         xs: "0.75rem",

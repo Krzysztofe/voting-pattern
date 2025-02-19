@@ -1,63 +1,56 @@
 import React from "react";
+import FormInputsWrapper from "./formInputsWrapper";
+import ButtonSubmit from "@/components/buttonSubmit";
 
 const FormToVote = () => {
   return (
-    <form className="mx-auto flex flex-col gap-3">
-      <div className="">
-        <div className="text-lg text-accent">Kandydatury</div>
+    <form className="flex flex-col w-full mx-auto">
+      <FormInputsWrapper>
+        <div className="text-lg text-accent font-bold">Kandydatury</div>
         <div className="form-control">
-          <label className="label cursor-pointer text-base">
+          <label className="cursor-pointer text-base flex items-center">
             <input
               type="radio"
               name="radio-10"
-              className="radio checked:bg-red-500"
+              className="radio-xs checked:bg-accent mr-2"
               defaultChecked
             />
             <span>Blanka Hasterok</span>
           </label>
         </div>
         <div className="form-control">
-          <label className="label cursor-pointer text-base">
+          <label className="cursor-pointer text-base flex items-center">
             <input
               type="radio"
               name="radio-10"
-              className="radio checked:bg-blue-500"
+              className="radio-xs checked:bg-accent mr-2"
               defaultChecked
             />
             <span>Monika Koralewska</span>
           </label>
         </div>
-        <div className="form-control">
-          <label className="label cursor-pointer text-base">
-            <input
-              type="radio"
-              name="radio-10"
-              className="radio checked:bg-blue-500"
-              defaultChecked
-            />
-            <span>Maria Malinowska</span>
-          </label>
-        </div>
+
         <div className="text-xs text-danger">error</div>
-      </div>
+      </FormInputsWrapper>
 
-      <div className="">
-        <label htmlFor="" className="text-lg  text-accent">
-          Podaj numer identyfikacyjny
-        </label>
-        <input
-          type="number"
-          className="input input-bordered border-4 border-indigo-500  input-md w-full max-w-xs px-2"
-          value="userName"
-          placeholder="Nr"
-          name="userName"
-        />
-        <div className="text-xs  text-danger">error</div>
-      </div>
+      <FormInputsWrapper>
+        <div>
+          <label htmlFor="" className="text-lg text-accent font-bold block">
+            Podaj numer identyfikacyjny
+          </label>
+          <input
+            type="number"
+            className="w-full max-w-xs border-b-2 border-gray-300 focus:border-accent focus:outline-none px-2 py-1"
+            value="userName"
+            placeholder="Nr"
+            name="userName"
+          />
+          <div className="text-xs  text-danger">error</div>
+        </div>
+      </FormInputsWrapper>
 
-      <button className="bg-accent text-white px-2 block ml-auto">
-        Zagłosuj
-      </button>
+     
+      <ButtonSubmit />
     </form>
   );
 };
