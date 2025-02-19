@@ -1,28 +1,41 @@
-import React from "react";
+import { prisma } from "@/lib/db";
 
-const TableBody = () => {
+const TableBody = async () => {
+  const posts = await prisma.post.findMany();
+
+  const candidatsData = posts?.reduce((acc: any, post: any) => {
+
+    acc[post.candidateName] = (acc[post.candidateName] || 0) + 1;
+
+    return acc;
+  }, {});
+
+
+
+  const allVotes = Object.values(candidatsData).reduce(
+    (acc: any, votes: any) => acc + votes
+  ) as number;
+
+
   return (
     <>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Jan</td>
-          <td>Kowalski</td>
-          <td>100%</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Anna</td>
-          <td>Nowak</td>
-          <td>80%</td>
-        </tr>
+        {Object.entries(candidatsData).map((candidate: any, idx) => {
+          return (
+            <tr key={candidate[0]}>
+              <td>{idx + 1}</td>
+              <td>{candidate[0]}</td>
+              <td>{candidate[1]}</td>
+            </tr>
+          );
+        })}
       </tbody>
+
       <tfoot>
         <tr>
           <td></td>
-          <td></td>
-          <td>suma głosów </td>
-          <td>99</td>
+          <td className="text-end">suma: </td>
+          <td>{allVotes}</td>
         </tr>
       </tfoot>
     </>

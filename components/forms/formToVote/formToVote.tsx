@@ -15,7 +15,7 @@ const FormToVote = () => {
               value="Blanka Hasterok"
               name="candidateName"
               className="radio-xs checked:bg-accent mr-2"
-              defaultChecked
+              // defaultChecked
             />
             <span>Blanka Hasterok</span>
           </label>
@@ -27,7 +27,7 @@ const FormToVote = () => {
               value="Monika Koralewska"
               name="candidateName"
               className="radio-xs checked:bg-accent mr-2"
-              defaultChecked
+              // defaultChecked
             />
             <span>Monika Koralewska</span>
           </label>

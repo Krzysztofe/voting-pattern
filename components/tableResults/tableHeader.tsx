@@ -5,9 +5,8 @@ const TableHeader = () => {
     <thead>
       <tr>
         <th>lp</th>
-        <th>Nazwisko</th>
-        <th>Imię</th>
-        <th>Oddane głosy</th>
+        <th className="text-start">Kandydat</th>
+        <th className="text-start">Oddane głosy</th>
       </tr>
     </thead>
   );
