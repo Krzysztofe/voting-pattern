@@ -1,12 +1,16 @@
-import React from "react";
+import { Suspense } from "react";
 import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
+import Loading from "@/app/login/admin/loading";
+Loading;
 
 const TableResults = () => {
   return (
     <table>
-      <TableHeader />
-      <TableBody />
+      <Suspense fallback={<Loading />}>
+        <TableHeader />
+        <TableBody />
+      </Suspense>
     </table>
   );
 };
