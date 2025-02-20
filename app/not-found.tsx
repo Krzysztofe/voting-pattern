@@ -1,6 +1,6 @@
 const NotFound = () => {
   return (
-    <div className="text-center h-screen flex justify-center items-center">
+    <div className="text-accent h-screen flex justify-center items-center text-lg">
       Błędny adres
     </div>
   );

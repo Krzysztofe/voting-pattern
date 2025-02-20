@@ -2,8 +2,8 @@
 
 const Loading = () => {
     return (
-      <div className="">
-        <span className="loading loading-ring loading-sm bg-accent"></span>
+      <div className="text-center">
+        <div className="loading loading-ring loading-lg bg-accent "></div>
       </div>
     );
 };

@@ -2,16 +2,17 @@ import { Suspense } from "react";
 import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
 import Loading from "@/app/login/admin/loading";
-Loading;
 
 const TableResults = () => {
   return (
-    <table>
+    <>
       <Suspense fallback={<Loading />}>
-        <TableHeader />
-        <TableBody />
+        <table className="mx-auto mt-5">
+          <TableHeader />
+          <TableBody />
+        </table>
       </Suspense>
-    </table>
+    </>
   );
 };
 

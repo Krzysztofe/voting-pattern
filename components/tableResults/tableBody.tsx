@@ -1,21 +1,20 @@
 import { prisma } from "@/lib/db";
 
 const TableBody = async () => {
+  // await new Promise(resolve => {
+  //   setTimeout(resolve, 10000);
+  // });
   const posts = await prisma.post.findMany();
 
   const candidatsData = posts?.reduce((acc: any, post: any) => {
-
     acc[post.candidateName] = (acc[post.candidateName] || 0) + 1;
 
     return acc;
   }, {});
 
-
-
   const allVotes = Object.values(candidatsData).reduce(
     (acc: any, votes: any) => acc + votes
   ) as number;
-
 
   return (
     <>
@@ -23,9 +22,15 @@ const TableBody = async () => {
         {Object.entries(candidatsData).map((candidate: any, idx) => {
           return (
             <tr key={candidate[0]}>
-              <td>{idx + 1}</td>
-              <td>{candidate[0]}</td>
-              <td>{candidate[1]}</td>
+              <td className="border border-accent px-2">
+                {idx + 1}
+              </td>
+              <td className="border border-accent px-2">
+                {candidate[0]}
+              </td>
+              <td className="border border-accent px-2">
+                {candidate[1]}
+              </td>
             </tr>
           );
         })}
@@ -33,9 +38,9 @@ const TableBody = async () => {
 
       <tfoot>
         <tr>
-          <td></td>
-          <td className="text-end">suma: </td>
-          <td>{allVotes}</td>
+          <td className="px-2"></td>
+          <td className="text-end px-2">Suma: </td>
+          <td className="px-2">{allVotes}</td>
         </tr>
       </tfoot>
     </>
