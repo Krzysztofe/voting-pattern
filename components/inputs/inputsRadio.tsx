@@ -1,3 +1,5 @@
+import FormInputsWrapper from "../forms/formToVote/formInputsWrapper";
+
 type Props = {
   headerText: string;
   inputsData: {
@@ -8,11 +10,11 @@ type Props = {
 
 const InputsRadio = (props: Props) => {
   return (
-    <>
+    <FormInputsWrapper>
       <div className="text-lg text-accent">{props.headerText}</div>
       {props.inputsData.map(({ value, name }) => {
         return (
-          <div className="form-control">
+          <div className="form-control" key={value}>
             <label className="cursor-pointer text-base flex items-center">
               <input
                 type="radio"
@@ -25,7 +27,7 @@ const InputsRadio = (props: Props) => {
           </div>
         );
       })}
-    </>
+    </FormInputsWrapper>
   );
 };
 
