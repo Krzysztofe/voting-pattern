@@ -1,6 +1,8 @@
 http://vps-2c27257b.vps.ovh.ca:8080/
-
 http://vps-2c27257b.vps.ovh.ca:8080/login/admin
+
+prisma
+sqlite
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
