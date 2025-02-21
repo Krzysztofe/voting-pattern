@@ -1,7 +1,9 @@
 http://vps-2c27257b.vps.ovh.ca:8080/
 http://vps-2c27257b.vps.ovh.ca:8080/login/admin
 
-zod<br>
+
+
+zod - client validation/server validation  <br>
 prisma <br>
 sqlite 
 
