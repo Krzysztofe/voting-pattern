@@ -1,9 +1,10 @@
-import React from "react";
-import FormInputsWrapper from "./formInputsWrapper";
+"use client";
+
 import ButtonSubmit from "@/components/buttonSubmit";
 import { postVote } from "@/actions/postVote";
 import InputsRadio from "@/components/inputs/inputsRadio";
 import InputsText from "@/components/inputs/inputsText";
+import { useActionState } from "react";
 
 const dataInputsCandidates = [
   { value: "Blanka Hasterok", name: "candidateName" },
@@ -19,14 +20,23 @@ const dataInputsUser = [
   },
 ];
 
-const FormToVote = () => {
+const FormVoteSubmition = () => {
+  const [state, formAction] = useActionState(postVote, { message: "" }); 
+
+  console.log('',state)
+
+
+  const clientAction = async (formData: FormData) => {};
+
   return (
-    <form action={postVote} className="flex flex-col w-full mx-auto pb-16">
+    <form action={formAction} className="flex flex-col w-full mx-auto pb-16">
+      
       <InputsRadio headerText="Kandydatury" inputsData={dataInputsCandidates} />
+      {state?.message && <p className="text-red-500">{state.message}</p>}{" "}
       <InputsText inputsData={dataInputsUser} />
       <ButtonSubmit />
     </form>
   );
 };
 
-export default FormToVote;
+export default FormVoteSubmition;

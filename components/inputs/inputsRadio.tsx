@@ -1,4 +1,4 @@
-import FormInputsWrapper from "../forms/formToVote/formInputsWrapper";
+import FormInputsWrapper from "../forms/formVoteSubmition/formInputsWrapper";
 
 type Props = {
   headerText: string;

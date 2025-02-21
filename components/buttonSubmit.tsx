@@ -1,11 +1,18 @@
-import React from 'react';
+"use client";
+
+import { useFormStatus } from "react-dom";
 
 const ButtonSubmit = () => {
-    return (
-      <button className="bg-accent text-white px-6 py-1 block ml-auto mt-8 mr-24">
-        Zagłosuj
-      </button>
-    );
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      disabled={pending}
+      className="bg-accent text-white py-1 block ml-auto mt-8 mr-24 w-24"
+    >
+      {pending ? "Wysyła" : "Zagłosuj"}
+    </button>
+  );
 };
 
 export default ButtonSubmit;
