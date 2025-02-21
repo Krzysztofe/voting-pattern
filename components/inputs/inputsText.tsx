@@ -6,6 +6,7 @@ type Props = {
     name: string;
     placeholder: string;
   }[];
+  errorMsg: Record<string, string>;
 };
 
 const InputsText = (props: Props) => {
@@ -24,7 +25,9 @@ const InputsText = (props: Props) => {
                 placeholder={placeholder}
                 name={name}
               />
-              <div className="text-xs  text-danger">error</div>
+              <div className="text-xs text-danger h-4">
+                {props.errorMsg[name]}
+              </div>
             </div>
           </FormInputsWrapper>
         );

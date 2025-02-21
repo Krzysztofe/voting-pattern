@@ -6,6 +6,7 @@ type Props = {
     value: string;
     name: string;
   }[];
+  errorMsg: string
 };
 
 const InputsRadio = (props: Props) => {
@@ -27,6 +28,7 @@ const InputsRadio = (props: Props) => {
           </div>
         );
       })}
+      <div className="text-xs text-danger h-4">{props.errorMsg}</div>
     </FormInputsWrapper>
   );
 };

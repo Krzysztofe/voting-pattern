@@ -1,30 +1,34 @@
 "use server";
 
+import { formVoteSchema } from "@/components/forms/formVoteSubmition/formVoteSchema";
 import { prisma } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
 export const postVote = async (
-  prevState: { message: string } | undefined,
-  formData: FormData
-): Promise<{ message: string } | undefined> => {
-  const candidateName = formData
-    .get("candidateName")
-    ?.toString()
-    .trim() as string;
-  const userName = formData.get("userName")?.toString().trim() as string;
-  const userSurname = formData.get("userSurname")?.toString().trim() as string;
+  votingValues: unknown
+): Promise<
+  { message?: string; error?: Record<string, string> } | undefined
+> => {
+  const validationResult = formVoteSchema.safeParse(votingValues);
+  console.log("rrrrrrrrr");
 
-  if (!candidateName || !userName || !userSurname) {
-    return { message: "Wymagane" };
+  if (!validationResult.success) {
+    let errorMsg: Record<string, string> = {};
+
+    validationResult.error.issues.forEach(issue => {
+      errorMsg[issue.path[0]] = issue.message;
+    });
+
+    return {
+      error: errorMsg,
+    };
   }
+
+  // console.log("vot", votingValues);
 
   try {
     await prisma.post.create({
-      data: {
-        candidateName,
-        userName,
-        userSurname,
-      },
+      data: validationResult.data,
     });
 
     revalidatePath("/login/admin");
