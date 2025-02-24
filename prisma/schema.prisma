@@ -9,7 +9,7 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
-model Post {
+model Votes {
   id Int @id @default(autoincrement())
   candidateName String
   userName String

@@ -4,9 +4,9 @@ const TableBody = async () => {
   // await new Promise(resolve => {
   //   setTimeout(resolve, 10000);
   // });
-  const posts = await prisma.post.findMany();
+  const votes = await prisma.votes.findMany();
 
-  const candidatsData = posts?.reduce((acc: any, post: any) => {
+  const candidatsData = votes?.reduce((acc: any, post: any) => {
     acc[post.candidateName] = (acc[post.candidateName] || 0) + 1;
 
     return acc;

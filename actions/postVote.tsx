@@ -10,7 +10,6 @@ export const postVote = async (
   { message?: string; error?: Record<string, string> } | undefined
 > => {
   const validationResult = formVoteSchema.safeParse(votingValues);
-  console.log("rrrrrrrrr");
 
   if (!validationResult.success) {
     let errorMsg: Record<string, string> = {};
@@ -24,15 +23,12 @@ export const postVote = async (
     };
   }
 
-  // console.log("vot", votingValues);
-
   try {
-    await prisma.post.create({
+    await prisma.votes.create({
       data: validationResult.data,
     });
 
     revalidatePath("/login/admin");
-
     return { message: "Głos oddany pomyślnie!" };
   } catch (error) {
     return { message: "Błąd podczas oddawania głosu. Spróbuj ponownie." };

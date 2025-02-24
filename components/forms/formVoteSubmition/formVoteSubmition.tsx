@@ -5,7 +5,7 @@ import { postVote } from "@/actions/postVote";
 import InputsRadio from "@/components/inputs/inputsRadio";
 import InputsText from "@/components/inputs/inputsText";
 import { formVoteSchema } from "./formVoteSchema";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const dataInputsCandidates = [
   { value: "Blanka Hasterok", name: "candidateName" },
@@ -23,14 +23,20 @@ const dataInputsUser = [
 
 const FormVoteSubmition = () => {
   const [errorMsg, setErrorMsg] = useState<Record<string, string>>({});
-  const [responseMessage, setResponseMessage] = useState<string | null>(null); //
+  const [responseMessage, setResponseMessage] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const clientAction = async (formData: FormData) => {
+  const clientAction = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
     const newVotingValues = {
       candidateName: formData.get("candidateName")?.toString().trim(),
       userName: formData.get("userName")?.toString().trim(),
       userSurname: formData.get("userSurname")?.toString().trim(),
     };
+
 
     const validationResult = formVoteSchema.safeParse(newVotingValues);
 
@@ -45,12 +51,14 @@ const FormVoteSubmition = () => {
     }
 
     const resp = await postVote(validationResult.data);
+
     if (resp?.error) {
       setErrorMsg(resp?.error);
     }
     if (resp?.message) {
       setResponseMessage(resp.message);
       setErrorMsg({});
+      formRef.current?.reset();
     }
   };
 
@@ -65,7 +73,11 @@ const FormVoteSubmition = () => {
   }, [responseMessage]);
 
   return (
-    <form action={clientAction} className="flex flex-col w-full mx-auto pb-16">
+    <form
+      onSubmit={clientAction}
+      ref={formRef}
+      className="flex flex-col w-full mx-auto pb-16"
+    >
       <InputsRadio
         headerText="Kandydatury"
         inputsData={dataInputsCandidates}
