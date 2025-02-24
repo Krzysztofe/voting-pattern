@@ -1,9 +1,9 @@
 import { prisma } from "@/lib/db";
 
 const TableBody = async () => {
-  // await new Promise(resolve => {
-  //   setTimeout(resolve, 10000);
-  // });
+  await new Promise(resolve => {
+    setTimeout(resolve, 10000);
+  });
   const votes = await prisma.votes.findMany();
 
   const candidatsData = votes?.reduce((acc: any, post: any) => {

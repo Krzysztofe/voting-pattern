@@ -1,11 +1,7 @@
-
+import LoadingComponent from "@/components/loadingComponent";
 
 const Loading = () => {
-    return (
-      <div className="text-center">
-        <div className="loading loading-ring loading-lg bg-accent "></div>
-      </div>
-    );
+  return <LoadingComponent color="accent" size="lg" />;
 };
 
 export default Loading;

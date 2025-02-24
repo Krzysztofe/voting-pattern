@@ -28,15 +28,19 @@ const FormVoteSubmition = () => {
 
   const clientAction = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!formRef.current) return;
 
-    const formData = new FormData(e.currentTarget);
+    // await new Promise(resolve => {
+    //   setTimeout(resolve, 5000);
+    // });
+
+   const formData = new FormData(formRef.current);
 
     const newVotingValues = {
       candidateName: formData.get("candidateName")?.toString().trim(),
       userName: formData.get("userName")?.toString().trim(),
       userSurname: formData.get("userSurname")?.toString().trim(),
     };
-
 
     const validationResult = formVoteSchema.safeParse(newVotingValues);
 
