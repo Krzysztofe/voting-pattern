@@ -1,4 +1,4 @@
-import FormVoteSubmition from "@/components/forms/formVoteSubmition/formVoteSubmition";
+import FormVoteSubmition from "@/components/forms/formVote/formVote";
 import HeaderFormPage from "@/components/headers/headerFormPage";
 
 export default function Home() {

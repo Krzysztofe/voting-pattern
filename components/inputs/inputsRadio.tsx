@@ -1,4 +1,4 @@
-import FormInputsWrapper from "../forms/formVoteSubmition/formInputsWrapper";
+import FormInputsWrapper from "../forms/formVote/formInputsWrapper";
 
 type Props = {
   headerText: string;
@@ -6,7 +6,7 @@ type Props = {
     value: string;
     name: string;
   }[];
-  errorMsg: string
+  errorMsg: string;
 };
 
 const InputsRadio = (props: Props) => {

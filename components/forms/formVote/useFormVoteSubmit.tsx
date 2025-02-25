@@ -5,7 +5,7 @@ import { formVoteSchema } from "./formVoteSchema";
 
 const useFormVoteSumbit = () => {
   const [errorMsg, setErrorMsg] = useState<Record<string, string>>({});
-  const [isRegistered, setIsRegistered] = useState<string>("");
+  const [isUserRegistered, setIsUserRegistered] = useState<string>("");
   const [responseMessage, setResponseMessage] = useState<string>("");
  const formRef = useRef<HTMLFormElement>(null);
 
@@ -31,7 +31,7 @@ const useFormVoteSumbit = () => {
         errorMsg[issue.path[0]] = issue.message;
       });
       setErrorMsg(errorMsg);
-      setIsRegistered("");
+      setIsUserRegistered("");
       return;
     }
 
@@ -41,19 +41,26 @@ const useFormVoteSumbit = () => {
       setErrorMsg(resp?.error);
     }
     if (resp?.isRegistered) {
-      setIsRegistered(resp?.isRegistered);
+      setIsUserRegistered(resp?.isRegistered);
       setErrorMsg({});
     }
 
     if (resp?.message) {
       setResponseMessage(resp.message);
-      setIsRegistered("");
+      setIsUserRegistered("");
       setErrorMsg({});
       formRef.current?.reset();
     }
   };
 
-  return { errorMsg, isRegistered, responseMessage,setResponseMessage, formRef,clientAction };
+  return {
+    errorMsg,
+    isUserRegistered,
+    responseMessage,
+    setResponseMessage,
+    formRef,
+    clientAction,
+  };
 };
 
 export default useFormVoteSumbit;

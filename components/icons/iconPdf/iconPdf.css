@@ -1,0 +1,10 @@
+.iconPdf {
+  mask-image: url("file-pdf-solid.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: content;
+  -webkit-mask-image: url("file-pdf-solid.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: content;
+}

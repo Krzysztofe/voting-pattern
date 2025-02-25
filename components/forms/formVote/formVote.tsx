@@ -23,7 +23,7 @@ const dataInputsUser = [
 const FormVoteSubmition = () => {
   const {
     errorMsg,
-    isRegistered,
+    isUserRegistered,
     responseMessage,
     setResponseMessage,
     formRef,
@@ -49,9 +49,9 @@ const FormVoteSubmition = () => {
         }}
       />
       <div className="text-xs text-danger h-4 w-[50%] mx-auto">
-        {isRegistered}
+        {isUserRegistered}
       </div>
-      <ButtonSubmit />
+      <ButtonSubmit text="Zagłosuj" />
       {responseMessage && (
         <RequestMessage
           message={responseMessage}
