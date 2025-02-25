@@ -9,11 +9,10 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
-model Votes {
+model Vote {
   id Int @id @default(autoincrement())
   candidateName String
-  userName String
-  userSurname String
+  userFullName String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   published Boolean @default(false)

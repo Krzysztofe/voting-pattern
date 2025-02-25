@@ -4,8 +4,11 @@ const TableBody = async () => {
   await new Promise(resolve => {
     setTimeout(resolve, 10000);
   });
-  const votes = await prisma.votes.findMany();
-
+  const votes = await prisma.vote.findMany();
+  console.log("vot", votes);
+  if (!votes || votes.length === 0) {
+    return <div>Brak oddanych głosów</div>;
+  }
   const candidatsData = votes?.reduce((acc: any, post: any) => {
     acc[post.candidateName] = (acc[post.candidateName] || 0) + 1;
 
@@ -22,15 +25,9 @@ const TableBody = async () => {
         {Object.entries(candidatsData).map((candidate: any, idx) => {
           return (
             <tr key={candidate[0]}>
-              <td className="border border-accent px-2">
-                {idx + 1}
-              </td>
-              <td className="border border-accent px-2">
-                {candidate[0]}
-              </td>
-              <td className="border border-accent px-2">
-                {candidate[1]}
-              </td>
+              <td className="border border-accent px-2">{idx + 1}</td>
+              <td className="border border-accent px-2">{candidate[0]}</td>
+              <td className="border border-accent px-2">{candidate[1]}</td>
             </tr>
           );
         })}

@@ -1,11 +1,12 @@
 "use client";
 
-import ButtonSubmit from "@/components/buttonSubmit";
+import ButtonSubmit from "@/components/buttons/buttonSubmit";
 import { postVote } from "@/actions/postVote";
 import InputsRadio from "@/components/inputs/inputsRadio";
 import InputsText from "@/components/inputs/inputsText";
 import { formVoteSchema } from "./formVoteSchema";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import RequestMessage from "./requestMessage";
 
 const dataInputsCandidates = [
   { value: "Blanka Hasterok", name: "candidateName" },
@@ -23,18 +24,16 @@ const dataInputsUser = [
 
 const FormVoteSubmition = () => {
   const [errorMsg, setErrorMsg] = useState<Record<string, string>>({});
-  const [responseMessage, setResponseMessage] = useState<string | null>(null);
+  const [isRegistered, setIsRegistered] = useState<string>("");
+  const [responseMessage, setResponseMessage] = useState<string>("");
+
   const formRef = useRef<HTMLFormElement>(null);
 
   const clientAction = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formRef.current) return;
 
-    // await new Promise(resolve => {
-    //   setTimeout(resolve, 5000);
-    // });
-
-   const formData = new FormData(formRef.current);
+    const formData = new FormData(formRef.current);
 
     const newVotingValues = {
       candidateName: formData.get("candidateName")?.toString().trim(),
@@ -51,6 +50,7 @@ const FormVoteSubmition = () => {
         errorMsg[issue.path[0]] = issue.message;
       });
       setErrorMsg(errorMsg);
+      setIsRegistered("");
       return;
     }
 
@@ -59,22 +59,18 @@ const FormVoteSubmition = () => {
     if (resp?.error) {
       setErrorMsg(resp?.error);
     }
+    if (resp?.isRegistered) {
+      setIsRegistered(resp?.isRegistered);
+      setErrorMsg({});
+    }
+
     if (resp?.message) {
       setResponseMessage(resp.message);
+      setIsRegistered("");
       setErrorMsg({});
       formRef.current?.reset();
     }
   };
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setResponseMessage("");
-    }, 3000);
-
-    () => {
-      return clearTimeout(timeoutId);
-    };
-  }, [responseMessage]);
 
   return (
     <form
@@ -94,8 +90,16 @@ const FormVoteSubmition = () => {
           userSurname: errorMsg.userSurname,
         }}
       />
-      <div className="text-xs h-6"> {responseMessage}</div>
+      <div className="text-xs text-danger h-4 w-[50%] mx-auto">
+        {isRegistered}
+      </div>
       <ButtonSubmit />
+      {responseMessage && (
+        <RequestMessage
+          message={responseMessage}
+          setMessage={setResponseMessage}
+        />
+      )}
     </form>
   );
 };

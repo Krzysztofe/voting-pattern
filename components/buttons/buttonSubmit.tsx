@@ -1,6 +1,6 @@
 "use client";
 
-import LoadingComponent from "./loadingComponent";
+import LoadingComponent from "../loadingComponent";
 import { useFormStatus } from "react-dom";
 
 const ButtonSubmit = () => {
