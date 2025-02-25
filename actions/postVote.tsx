@@ -34,11 +34,9 @@ export const postVote = async (
 
   const isUserRegistered = usersFullNames.includes(userFullName);
 
-
-
   if (isUserRegistered) {
     return {
-      isRegistered: "Głosujący już zarejestrowany",
+      isRegistered: "Głosujący już oddał głos",
     };
   }
 

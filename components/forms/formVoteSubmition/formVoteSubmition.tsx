@@ -1,12 +1,10 @@
 "use client";
 
 import ButtonSubmit from "@/components/buttons/buttonSubmit";
-import { postVote } from "@/actions/postVote";
 import InputsRadio from "@/components/inputs/inputsRadio";
 import InputsText from "@/components/inputs/inputsText";
-import { formVoteSchema } from "./formVoteSchema";
-import { useRef, useState } from "react";
 import RequestMessage from "./requestMessage";
+import useFormVoteSubmit from "./useFormVoteSubmit";
 
 const dataInputsCandidates = [
   { value: "Blanka Hasterok", name: "candidateName" },
@@ -23,54 +21,14 @@ const dataInputsUser = [
 ];
 
 const FormVoteSubmition = () => {
-  const [errorMsg, setErrorMsg] = useState<Record<string, string>>({});
-  const [isRegistered, setIsRegistered] = useState<string>("");
-  const [responseMessage, setResponseMessage] = useState<string>("");
-
-  const formRef = useRef<HTMLFormElement>(null);
-
-  const clientAction = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!formRef.current) return;
-
-    const formData = new FormData(formRef.current);
-
-    const newVotingValues = {
-      candidateName: formData.get("candidateName")?.toString().trim(),
-      userName: formData.get("userName")?.toString().trim(),
-      userSurname: formData.get("userSurname")?.toString().trim(),
-    };
-
-    const validationResult = formVoteSchema.safeParse(newVotingValues);
-
-    if (!validationResult.success) {
-      let errorMsg: Record<string, string> = {};
-
-      validationResult.error.issues.forEach(issue => {
-        errorMsg[issue.path[0]] = issue.message;
-      });
-      setErrorMsg(errorMsg);
-      setIsRegistered("");
-      return;
-    }
-
-    const resp = await postVote(validationResult.data);
-
-    if (resp?.error) {
-      setErrorMsg(resp?.error);
-    }
-    if (resp?.isRegistered) {
-      setIsRegistered(resp?.isRegistered);
-      setErrorMsg({});
-    }
-
-    if (resp?.message) {
-      setResponseMessage(resp.message);
-      setIsRegistered("");
-      setErrorMsg({});
-      formRef.current?.reset();
-    }
-  };
+  const {
+    errorMsg,
+    isRegistered,
+    responseMessage,
+    setResponseMessage,
+    formRef,
+    clientAction,
+  } = useFormVoteSubmit();
 
   return (
     <form
