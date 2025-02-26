@@ -29,7 +29,7 @@ export default {
         base: "1rem",
         lg: "1.3rem",
         xl: "1.8rem",
-        "2xl": "1.5rem", // 24px
+        "pdfSize": "0.5rem", // 24px
         "3xl": "1.875rem", // 30px
         "4xl": "2.25rem", // 36px
         "5xl": "3rem", // 48px

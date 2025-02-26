@@ -1,35 +1,22 @@
-// context/VotesContext.tsx
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { getVotes } from "./getVotes";
+import { useContext } from "react";
 
-interface Vote {
-  candidateName: string;
-}
-
-interface VotesContextType {
-  votes: Vote[];
-}
-
-const VotesContext = createContext<VotesContextType | undefined>(undefined);
-
-export const VotesProvider = ({ children }: { children: React.ReactNode }) => {
-  const [votes, setVotes] = useState<Vote[]>([]);
-
-  useEffect(() => {
-    const fetchVotes = async () => {
-      const data = await getVotes();
-      // setVotes(data);
-    };
-
-    fetchVotes();
-  }, []);
-
-  return (
-    <VotesContext.Provider value={{ votes }}>{children}</VotesContext.Provider>
-  );
+type VotesData = {
+  candidatesBilans: Record<string, number>;
+  totalVotes: number;
 };
+
+type VotesContextType = {
+  votes: VotesData | null;
+  setVotes: React.Dispatch<React.SetStateAction<VotesData | null>>;
+};
+
+const VotesContext = createContext<VotesContextType | null>(null);
+
+
 
 export const useVotes = () => {
   const context = useContext(VotesContext);
@@ -37,4 +24,23 @@ export const useVotes = () => {
     throw new Error("useVotes must be used within a VotesProvider");
   }
   return context;
+};
+
+
+export const VotesProvider = ({ children }: { children: React.ReactNode }) => {
+  const [votes, setVotes] = useState<VotesData | null>(null);
+
+  useEffect(() => {
+    const fetchVotes = async () => {
+      const data = await getVotes();
+      setVotes(data || null);
+    };
+    fetchVotes();
+  }, []);
+
+  return (
+    <VotesContext.Provider value={{ votes, setVotes }}>
+      {children}
+    </VotesContext.Provider>
+  );
 };

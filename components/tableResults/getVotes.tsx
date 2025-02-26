@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/db";
 import { cache } from "react";
 
-// Use cache to make it compatible with React Suspense
 export const getVotes = cache(async () => {
   try {
     const resp = await prisma.vote.findMany();
@@ -27,7 +26,7 @@ export const getVotes = cache(async () => {
       totalVotes,
     };
   } catch (error) {
-    console.error("Error fetching votes:", error);
-    return [];
+    console.error(error);
+    return null;
   }
 });

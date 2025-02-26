@@ -1,5 +1,5 @@
 "use client";
-import PdfCreator from "../pdf/pdfCreator";
+import PdfCreator from "../pdfCreator/pdfCreator";
 
 const HeaderAdminPage = () => {
   return (
