@@ -21,7 +21,7 @@ const InputsText = (props: Props) => {
               </label>
               <input
                 type="text"
-                className="w-full max-w-xs border-b-2 border-gray-300 focus:border-accent focus:outline-none px-2 py-1"
+                className="capitalize w-full max-w-xs border-b-2 border-gray-300 focus:border-accent focus:outline-none px-2 py-1"
                 placeholder={placeholder}
                 name={name}
               />

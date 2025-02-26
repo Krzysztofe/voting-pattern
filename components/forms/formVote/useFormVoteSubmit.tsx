@@ -1,14 +1,13 @@
 import { postVote } from "@/actions/postVote";
 import { useRef, useState } from "react";
 import { formVoteSchema } from "./formVoteSchema";
-
+import { capitalizeWords } from "@/utils/capitalizeWords";
 
 const useFormVoteSumbit = () => {
   const [errorMsg, setErrorMsg] = useState<Record<string, string>>({});
   const [isUserRegistered, setIsUserRegistered] = useState<string>("");
   const [responseMessage, setResponseMessage] = useState<string>("");
- const formRef = useRef<HTMLFormElement>(null);
-
+  const formRef = useRef<HTMLFormElement>(null);
 
   const clientAction = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,8 +17,10 @@ const useFormVoteSumbit = () => {
 
     const newVotingValues = {
       candidateName: formData.get("candidateName")?.toString().trim(),
-      userName: formData.get("userName")?.toString().trim(),
-      userSurname: formData.get("userSurname")?.toString().trim(),
+      userName: capitalizeWords(formData.get("userName")?.toString().trim()),
+      userSurname: capitalizeWords(
+        formData.get("userSurname")?.toString().trim()
+      ),
     };
 
     const validationResult = formVoteSchema.safeParse(newVotingValues);
