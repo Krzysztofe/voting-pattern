@@ -1,17 +1,18 @@
-import { Suspense } from "react";
 import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
-import Loading from "@/app/login/admin/loading";
+import PdfCreator from "../pdf/pdfCreator";
+import { getVotes } from "./getVotes";
 
-const TableResults = () => {
+const TableResults = async () => {
+  const votes = await getVotes();
+
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <table className="mx-auto mt-5">
-          <TableHeader />
-          <TableBody />
-        </table>
-      </Suspense>
+      <PdfCreator votes={votes} />
+      <table className="mx-auto mt-5">
+        <TableHeader />
+        <TableBody votes={votes} />
+      </table>
     </>
   );
 };
