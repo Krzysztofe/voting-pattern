@@ -6,12 +6,12 @@ import { Suspense } from "react";
 
 const pageAdmin = () => {
   return (
-    <main>
+    <>
       <HeaderAdminPage />
       <Suspense fallback={<LoadingComponent color="accent" size="lg" />}>
         <TableResults />
       </Suspense>
-    </main>
+    </>
   );
 };
 

@@ -20,11 +20,11 @@ const PdfCreator = (props: Props) => {
     <>
       <div
         className="z-10 absolute -left-full p-5"
-        style={{ fontSize: "0.5rem" }}
+        style={{ fontSize: "10px" }}
         ref={pdfRef}
       >
         <div className="flex justify-between">
-          <div className="text-xs">Wyniki głosowania </div>
+          <div className="">Wyniki głosowania </div>
           <div className="">
             <div>Data: {getCurrentDateString()}</div>
             <div>Godzina: {getCurrentDateTimeString()}</div>
@@ -54,7 +54,7 @@ const PdfCreator = (props: Props) => {
           </tfoot>
         </table>
       </div>
-      <div onClick={download}>
+      <div className="absolute top-[1.8rem] right-[1.5rem]" onClick={download}>
         <IconPdf />
       </div>
     </>
