@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db";
 import { cache } from "react";
 
-export const getVotes = cache(async () => {
+const getVotes = async () => {
   try {
     const resp = await prisma.vote.findMany();
     if (!resp) {
@@ -29,4 +29,6 @@ export const getVotes = cache(async () => {
     console.error(error);
     return null;
   }
-});
+};
+
+export const getVotesCash = cache(getVotes);

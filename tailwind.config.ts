@@ -22,6 +22,7 @@ export default {
         td_red: "rgb(226, 0, 34, 0.1)",
         danger: "#ff0101",
         bacground: "rgb(244, 244, 245)",
+        textColor: "#71717a",
       },
       fontSize: {
         xs: "0.75rem",
@@ -29,7 +30,7 @@ export default {
         base: "1rem",
         lg: "1.3rem",
         xl: "1.8rem",
-        "pdfSize": "0.5rem", // 24px
+        pdfSize: "0.5rem", // 24px
         "3xl": "1.875rem", // 30px
         "4xl": "2.25rem", // 36px
         "5xl": "3rem", // 48px

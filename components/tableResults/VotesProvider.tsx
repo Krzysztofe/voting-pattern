@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useState, useEffect } from "react";
-import { getVotes } from "./getVotes";
+import { getVotes } from "../../actions/getVotes";
 import { useContext } from "react";
 
 type VotesData = {
@@ -16,8 +16,6 @@ type VotesContextType = {
 
 const VotesContext = createContext<VotesContextType | null>(null);
 
-
-
 export const useVotes = () => {
   const context = useContext(VotesContext);
   if (!context) {
@@ -25,7 +23,6 @@ export const useVotes = () => {
   }
   return context;
 };
-
 
 export const VotesProvider = ({ children }: { children: React.ReactNode }) => {
   const [votes, setVotes] = useState<VotesData | null>(null);
