@@ -1,6 +1,6 @@
 "use client";
 
-import IconPdf from "../icons/iconPdf/iconPdf";
+import IconPdf from "../../icons/iconPdf/iconPdf";
 
 type Props = {
   download: () => Promise<void>;

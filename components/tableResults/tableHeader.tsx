@@ -4,13 +4,11 @@ const TableHeader = () => {
   return (
     <thead>
       <tr>
-        <th className="bg-accent text-white px-2 border border-accent border-r-white font-thin">
-          
-        </th>
-        <th className="text-start bg-accent text-white px-2 border border-y-accent font-thin">
+        <th className="bg-accent border border-accent border-r-white "></th>
+        <th className="text-start bg-accent text-white px-2 border border-y-accent font-normal">
           Kandydat
         </th>
-        <th className="text-start bg-accent text-white px-2 border border-accent border-l-white font-thin">
+        <th className="text-start bg-accent text-white px-2 border border-accent border-l-white font-normal">
           Oddane głosy
         </th>
       </tr>

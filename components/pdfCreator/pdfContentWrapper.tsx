@@ -30,7 +30,6 @@ const PdfContentWrapper = (props:Props) => {
       </div>
       {props.children}
     </div>
-    
     <PdfIconContainer download={download} />
     </>
    
