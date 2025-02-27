@@ -1,7 +1,8 @@
 http://vps-2c27257b.vps.ovh.ca:8080/
 http://vps-2c27257b.vps.ovh.ca:8080/login/admin
 
-
+html2canvas-pro
+jspdf
 
 zod - client validation/server validation  <br>
 prisma <br>
