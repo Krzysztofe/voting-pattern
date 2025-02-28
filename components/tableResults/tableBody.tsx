@@ -2,6 +2,8 @@ import { getVotesCash } from "@/actions/getVotes";
 import TableBodyEmpty from "./tableBodyEmpty";
 
 const TableBody = async () => {
+  await new Promise (resolve => setTimeout(resolve, 5000));
+
   const votes = await getVotesCash();
 
   if (!votes || votes?.totalVotes === 0) return <TableBodyEmpty />;

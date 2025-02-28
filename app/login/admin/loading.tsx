@@ -1,7 +1,11 @@
 import LoadingComponent from "@/components/loadingComponent";
 
 const Loading = () => {
-  return <LoadingComponent color="accent" size="lg" />;
+  return (
+    <div className="mt-6">
+      <LoadingComponent color="accent" size="loading-lg" />
+    </div>
+  );
 };
 
 export default Loading;

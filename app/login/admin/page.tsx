@@ -1,18 +1,22 @@
 import HeaderAdminPage from "@/components/headers/headerAdminPage";
-import LoadingComponent from "@/components/loadingComponent";
 import TableResults from "@/components/tableResults/tableResults";
 import React from "react";
 import { Suspense } from "react";
+import Loading from "./loading";
+import PdfContentWrapper from "@/components/pdfCreator/pdfContentWrapper";
 
-const pageAdmin = () => {
+const PageAdmin = () => {
   return (
     <>
       <HeaderAdminPage />
-      <Suspense fallback={<LoadingComponent color="accent" size="lg" />}>
+      <Suspense fallback={<Loading />}>
+        <PdfContentWrapper>
+          <TableResults />
+        </PdfContentWrapper>
         <TableResults />
       </Suspense>
     </>
   );
 };
 
-export default pageAdmin;
+export default PageAdmin;

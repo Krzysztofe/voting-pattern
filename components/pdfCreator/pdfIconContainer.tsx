@@ -9,9 +9,10 @@ type Props = {
 const PdfIconContainer = (props: Props) => {
   return (
     <div
-      className="absolute  right-[1rem] top-[1.9rem]"
+      className="absolute right-[1rem] top-[1.9rem]"
       onClick={props.download}
     >
+    
       <IconPdf />
     </div>
   );
