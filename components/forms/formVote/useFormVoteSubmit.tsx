@@ -3,11 +3,36 @@ import { useRef, useState } from "react";
 import { formVoteSchema } from "./formVoteSchema";
 import { capitalizeWords } from "@/utils/capitalizeWords";
 
-const useFormVoteSumbit = () => {
+const useFormVoteSubmit = () => {
   const [errorMsg, setErrorMsg] = useState<Record<string, string>>({});
   const [isUserRegistered, setIsUserRegistered] = useState<string>("");
   const [responseMessage, setResponseMessage] = useState<string>("");
   const formRef = useRef<HTMLFormElement>(null);
+
+ 
+  const handleChange = (name: string, value: string) => {
+    const newValues = {
+      candidateName: formRef.current?.candidateName?.value || "",
+      userName: capitalizeWords(formRef.current?.userName?.value || ""),
+      userSurname: capitalizeWords(formRef.current?.userSurname?.value || ""),
+      [name]: value,
+    };
+
+    const validationResult = formVoteSchema.safeParse(newValues);
+
+    if (!validationResult.success) {
+      const updatedErrors: Record<string, string> = {};
+      validationResult.error.issues.forEach(issue => {
+        updatedErrors[issue.path[0]] = issue.message;
+      });
+      setErrorMsg(updatedErrors);
+    } else {
+      setErrorMsg(prev => {
+        const { [name]: removed, ...rest } = prev; 
+        return rest;
+      });
+    }
+  };
 
   const clientAction = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,7 +52,6 @@ const useFormVoteSumbit = () => {
 
     if (!validationResult.success) {
       const errorMsg: Record<string, string> = {};
-
       validationResult.error.issues.forEach(issue => {
         errorMsg[issue.path[0]] = issue.message;
       });
@@ -39,10 +63,10 @@ const useFormVoteSumbit = () => {
     const resp = await postVote(validationResult.data);
 
     if (resp?.error) {
-      setErrorMsg(resp?.error);
+      setErrorMsg(resp.error);
     }
     if (resp?.isRegistered) {
-      setIsUserRegistered(resp?.isRegistered);
+      setIsUserRegistered(resp.isRegistered);
       setErrorMsg({});
     }
 
@@ -61,7 +85,8 @@ const useFormVoteSumbit = () => {
     setResponseMessage,
     formRef,
     clientAction,
+    handleChange, 
   };
 };
 
-export default useFormVoteSumbit;
+export default useFormVoteSubmit;

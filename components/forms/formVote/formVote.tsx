@@ -20,6 +20,7 @@ const dataInputsUser = [
   },
 ];
 
+
 const FormVoteSubmition = () => {
   const {
     errorMsg,
@@ -28,6 +29,7 @@ const FormVoteSubmition = () => {
     setResponseMessage,
     formRef,
     clientAction,
+    handleChange,
   } = useFormVoteSubmit();
 
   return (
@@ -40,13 +42,12 @@ const FormVoteSubmition = () => {
         headerText="Kandydatury"
         inputsData={dataInputsCandidates}
         errorMsg={errorMsg.candidateName}
+        handleChange={handleChange}
       />
       <InputsText
         inputsData={dataInputsUser}
-        errorMsg={{
-          userName: errorMsg.userName,
-          userSurname: errorMsg.userSurname,
-        }}
+        errorMsg={errorMsg}
+        handleChange={handleChange}
       />
       <div className="text-xs text-danger h-4 w-[50%] mx-auto">
         {isUserRegistered}

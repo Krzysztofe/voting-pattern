@@ -1,3 +1,5 @@
+
+
 import FormInputsWrapper from "../forms/formVote/formInputsWrapper";
 
 type Props = {
@@ -7,28 +9,33 @@ type Props = {
     name: string;
   }[];
   errorMsg: string;
+  handleChange: (name: string, value: string) => void;
 };
 
-const InputsRadio = (props: Props) => {
+const InputsRadio = ({
+  headerText,
+  inputsData,
+  errorMsg,
+  handleChange,
+}: Props) => {
   return (
     <FormInputsWrapper>
-      <div className="text-lg text-accent">{props.headerText}</div>
-      {props.inputsData.map(({ value, name }) => {
-        return (
-          <div className="form-control" key={value}>
-            <label className="cursor-pointer text-base flex items-center">
-              <input
-                type="radio"
-                value={value}
-                name={name}
-                className="radio-xs checked:bg-accent mr-2"
-              />
-              <span>{value}</span>
-            </label>
-          </div>
-        );
-      })}
-      <div className="text-xs text-danger h-4">{props.errorMsg}</div>
+      <div className="text-lg text-accent">{headerText}</div>
+      {inputsData.map(({ value, name }) => (
+        <div className="form-control" key={value}>
+          <label className="cursor-pointer text-base flex items-center">
+            <input
+              type="radio"
+              value={value}
+              name={name}
+              className="radio-xs checked:bg-accent mr-2"
+              onChange={e => handleChange(name, value)}
+            />
+            <span>{value}</span>
+          </label>
+        </div>
+      ))}
+      <div className="text-xs text-danger h-4">{errorMsg}</div>
     </FormInputsWrapper>
   );
 };
