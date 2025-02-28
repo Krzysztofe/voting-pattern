@@ -12,7 +12,7 @@ const useFormVoteSubmit = () => {
  
   const handleChange = (name: string, value: string) => {
     const newValues = {
-      candidateName: formRef.current?.candidateName?.value || "",
+      candidateName: formRef.current?.candidateName?.value || undefined,
       userName: capitalizeWords(formRef.current?.userName?.value || ""),
       userSurname: capitalizeWords(formRef.current?.userSurname?.value || ""),
       [name]: value,
