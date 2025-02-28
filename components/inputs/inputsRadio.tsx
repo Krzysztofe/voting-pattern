@@ -1,5 +1,3 @@
-
-
 import FormInputsWrapper from "../forms/formVote/formInputsWrapper";
 
 type Props = {
@@ -9,7 +7,7 @@ type Props = {
     name: string;
   }[];
   errorMsg: string;
-  handleChange: (name: string, value: string) => void;
+  handleChange: (name: string) => void;
 };
 
 const InputsRadio = ({
@@ -29,7 +27,7 @@ const InputsRadio = ({
               value={value}
               name={name}
               className="radio-xs checked:bg-accent mr-2"
-              onChange={e => handleChange(name, value)}
+              onChange={e => handleChange(name)}
             />
             <span>{value}</span>
           </label>

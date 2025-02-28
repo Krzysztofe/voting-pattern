@@ -9,15 +9,12 @@ const useFormVoteSubmit = () => {
   const [responseMessage, setResponseMessage] = useState<string>("");
   const formRef = useRef<HTMLFormElement>(null);
 
- 
-  const handleChange = (name: string, value: string) => {
+  const handleChange = (name: string) => {
     const newValues = {
       candidateName: formRef.current?.candidateName?.value || undefined,
       userName: capitalizeWords(formRef.current?.userName?.value || ""),
       userSurname: capitalizeWords(formRef.current?.userSurname?.value || ""),
-      [name]: value,
     };
-
     const validationResult = formVoteSchema.safeParse(newValues);
 
     if (!validationResult.success) {
@@ -28,7 +25,7 @@ const useFormVoteSubmit = () => {
       setErrorMsg(updatedErrors);
     } else {
       setErrorMsg(prev => {
-        const { [name]: removed, ...rest } = prev; 
+        const { [name]: removed, ...rest } = prev;
         return rest;
       });
     }
@@ -85,7 +82,7 @@ const useFormVoteSubmit = () => {
     setResponseMessage,
     formRef,
     clientAction,
-    handleChange, 
+    handleChange,
   };
 };
 
