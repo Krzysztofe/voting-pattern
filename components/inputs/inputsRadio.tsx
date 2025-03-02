@@ -27,7 +27,7 @@ const InputsRadio = ({
               value={value}
               name={name}
               className="radio-xs checked:bg-accent mr-2"
-              onChange={e => handleChange(name)}
+              onChange={() => handleChange(name)}
             />
             <span>{value}</span>
           </label>

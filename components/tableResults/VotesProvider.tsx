@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useState, useEffect } from "react";
-import { getVotes } from "../../actions/getVotes";
+// import { getVotesCash } from "../../actions/getVotes";
 import { useContext } from "react";
 
 type VotesData = {

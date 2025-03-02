@@ -25,17 +25,17 @@ export default {
         textColor: "#71717a",
       },
       fontSize: {
-        xs: "0.3rem",
+        xs: "0.75rem",
         sm: "0.875rem",
         base: "1rem",
         lg: "1.3rem",
         xl: "1.8rem",
-        pdfSize: "0.5rem", // 24px
-        "3xl": "1.875rem", // 30px
-        "4xl": "2.25rem", // 36px
-        "5xl": "3rem", // 48px
-        "6xl": "3.75rem", // 60px
-        "7xl": "4.5rem", // 72px
+        pdfSize: "0.5rem", 
+        "3xl": "1.875rem", 
+        "4xl": "2.25rem", 
+        "5xl": "3rem", 
+        "6xl": "3.75rem", 
+        "7xl": "4.5rem", 
       },
     },
   },

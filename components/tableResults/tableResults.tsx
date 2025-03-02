@@ -1,6 +1,5 @@
 import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
-import PdfContentWrapper from "../pdfCreator/pdfContentWrapper";
 
 const TableResults = async () => {
   return (

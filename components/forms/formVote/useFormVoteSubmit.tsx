@@ -26,6 +26,7 @@ const useFormVoteSubmit = () => {
     } else {
       setErrorMsg(prev => {
         const { [name]: removed, ...rest } = prev;
+        console.log('',removed)
         return rest;
       });
     }
