@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^6.4.0",
+    "@prisma/client": "^6.4.1",
+    "better-auth": "^1.2.0",
     "html2canvas-pro": "^1.5.8",
     "jose": "^6.0.8",
     "jspdf": "^3.0.0",

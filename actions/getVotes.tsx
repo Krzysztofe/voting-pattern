@@ -7,6 +7,7 @@ const getVotes = async () => {
     if (!resp) {
       throw new Error("Error");
     }
+    console.log("", resp);
 
     const candidatesBilans = resp.reduce<Record<string, number>>(
       (acc, post) => {
@@ -21,9 +22,14 @@ const getVotes = async () => {
       0
     );
 
+    const votingList = resp.map(({ candidateName, userFullName }) => {
+      return { candidateName, userFullName };
+    });
+
     return {
       candidatesBilans,
       totalVotes,
+      votingList,
     };
   } catch (error) {
     console.error(error);

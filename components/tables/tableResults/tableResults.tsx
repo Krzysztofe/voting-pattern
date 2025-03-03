@@ -1,10 +1,10 @@
-import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
+import TableHeader from "./tableHeader";
 
 const TableResults = async () => {
   return (
     <>
-      <table className="mx-auto mt-5">
+      <table className="mx-auto my-5">
         <TableHeader />
         <TableBody />
       </table>

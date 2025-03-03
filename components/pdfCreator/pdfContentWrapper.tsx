@@ -21,12 +21,11 @@ const PdfContentWrapper = (props: Props) => {
 
   return (
     <>
-      
       <div
         className="z-10 absolute -left-full px-5 py-1"
         style={{ fontSize: "3px" }}
         ref={pdfRef}
-      >xd
+      >
         <div className="flex justify-between">
           <div>Wyniki głosowania </div>
           <div>
