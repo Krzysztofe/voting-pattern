@@ -3,11 +3,20 @@ import { cache } from "react";
 
 const getVotes = async () => {
   try {
-    const resp = await prisma.vote.findMany();
+    const resp = await prisma.vote.findMany({
+      orderBy: { createdAt: "desc" },
+      select: {
+        candidateName: true,
+        userFullName: true,
+      },
+    });
+
+    
+
+    // const resp = await prisma.vote.findMany();
     if (!resp) {
       throw new Error("Error");
     }
-    console.log("", resp);
 
     const candidatesBilans = resp.reduce<Record<string, number>>(
       (acc, post) => {
@@ -22,9 +31,11 @@ const getVotes = async () => {
       0
     );
 
-    const votingList = resp.map(({ candidateName, userFullName }) => {
-      return { candidateName, userFullName };
-    });
+    const votingList = resp
+      .map(({ candidateName, userFullName }) => {
+        return { candidateName, userFullName };
+      })
+      .sort((a, b) => a.userFullName.localeCompare(b.userFullName));
 
     return {
       candidatesBilans,

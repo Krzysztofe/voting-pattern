@@ -24,7 +24,7 @@ export const postVote = async (
     };
   }
   const { candidateName, userName, userSurname } = validationResult.data;
-  const userFullName = `${userName} ${userSurname}`;
+  const userFullName = ` ${userSurname} ${userName}`;
 
   try {
     const existingVote = await prisma.vote.findFirst({
