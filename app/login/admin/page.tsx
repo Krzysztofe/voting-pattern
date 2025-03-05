@@ -1,31 +1,18 @@
 import HeaderAdminPage from "@/components/headers/headerAdminPage";
-import TableResults from "@/components/tables/tableResults/tableResults";
-import React from "react";
-import { Suspense } from "react";
-import PdfContentWrapper from "@/components/pdfCreator/pdfContentWrapper";
-import TableVotingList from "@/components/tables/tableVotingList/tableVotingList";
 import LoadingComponent from "@/components/loadingComponent";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
+import PdfContentWrapper from "@/components/pdfCreator/pdfContentWrapper";
 import ProtectedRouteWrapper from "@/components/protectedRouteWrapper";
+import TableResults from "@/components/tables/tableResults/tableResults";
+import TableVotingList from "@/components/tables/tableVotingList/tableVotingList";
+import { Suspense } from "react";
 
 const PageAdmin = async () => {
-  const logOut = async () => {
-    "use server";
-    await auth.api.signOut({ headers: await headers() });
-    redirect("/login");
-  };
-
   return (
     <ProtectedRouteWrapper>
       <HeaderAdminPage />
-      <form action={logOut}>
-        <button>wyloguj</button>
-      </form>
 
       <Suspense
-        fallback={<LoadingComponent color="accent" size="loading-lg" />}
+        fallback={<LoadingComponent color="text-accent" size="loading-lg" />}
       >
         <PdfContentWrapper>
           <TableResults />

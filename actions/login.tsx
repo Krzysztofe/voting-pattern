@@ -10,18 +10,17 @@ export const login = async (event: React.FormEvent<HTMLFormElement>) => {
   };
 
   if (!payload.email || !payload.password) {
-    console.error("❌ Missing required fields:", payload);
+    console.error(" Missing required fields:", payload);
     return;
   }
 
   try {
-    // Perform the login request
     const { data, error } = await authClient.signIn.email(payload, {
       onRequest: ctx => console.log("? Request sent", ctx),
       onSuccess: ctx => {
-        console.log("✅ Success!");
+        console.log("Success!");
       },
-      onError: ctx => console.error("❌ Error occurred", ctx),
+      onError: ctx => console.error("Error occurred", ctx),
     });
 
     if (error) {

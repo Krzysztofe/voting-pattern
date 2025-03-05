@@ -52,7 +52,11 @@ const FormVoteSubmition = () => {
       <div className="text-xs text-danger h-4 w-[50%] mx-auto">
         {isUserRegistered}
       </div>
-      <ButtonSubmit text="Zagłosuj" />
+      <ButtonSubmit
+        text="Zagłosuj"
+        bacground="bg-accent"
+        textColor="text-white"
+      />
       {responseMessage && (
         <RequestMessage
           message={responseMessage}

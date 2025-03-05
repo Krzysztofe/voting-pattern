@@ -7,7 +7,7 @@ const LoadingComponent = (props: Propps) => {
   return (
     <div className="flex items-center justify-center">
       <div
-        className={`loading loading-ring  text-${props.color} ${props.size}`}
+        className={`loading loading-ring  ${props.color} ${props.size}`}
       ></div>
     </div>
   );

@@ -5,6 +5,8 @@ import { useFormStatus } from "react-dom";
 
 type Props = {
   text: string;
+  bacground?: string;
+  textColor?: string;
 };
 
 const ButtonSubmit = (props: Props) => {
@@ -13,10 +15,10 @@ const ButtonSubmit = (props: Props) => {
   return (
     <button
       disabled={pending}
-      className="bg-accent text-white py-1 ml-auto mt-8 mr-24 w-24 h-7 flex items-center justify-center"
+      className={`${props.bacground} text-base font-normal ${props.textColor} py-1 w-24 h-7 flex items-center justify-center`}
     >
       {pending ? (
-        <LoadingComponent color="white" size="loading-sm" />
+        <LoadingComponent color="text-dark" size="loading-sm" />
       ) : (
         props.text
       )}
