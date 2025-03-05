@@ -1,3 +1,5 @@
+"use client"
+
 import FormInputsWrapper from "../forms/formVote/formInputsWrapper";
 
 type Props = {

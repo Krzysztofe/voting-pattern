@@ -1,3 +1,5 @@
+"use client";
+
 import FormInputsWrapper from "../forms/formVote/formInputsWrapper";
 
 type Props = {
@@ -7,10 +9,14 @@ type Props = {
     placeholder: string;
   }[];
   errorMsg: Record<string, string>;
-  handleChange: (name: string) => void;
+  handleChange?: (name: string) => void;
 };
 
-const InputsText = ({ inputsData, errorMsg, handleChange }: Props) => {
+const InputsText = ({
+  inputsData,
+  errorMsg,
+  handleChange = () => {},
+}: Props) => {
   return (
     <>
       {inputsData.map(({ label, name, placeholder }) => (

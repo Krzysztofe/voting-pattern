@@ -8,17 +8,9 @@ import LoadingComponent from "@/components/loadingComponent";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import ProtectedRouteWrapper from "@/components/protectedRouteWrapper";
 
 const PageAdmin = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
- 
-  if (!session) {
-    redirect("/login");
-  }
-
   const logOut = async () => {
     "use server";
     await auth.api.signOut({ headers: await headers() });
@@ -26,7 +18,7 @@ const PageAdmin = async () => {
   };
 
   return (
-    <>
+    <ProtectedRouteWrapper>
       <HeaderAdminPage />
       <form action={logOut}>
         <button>wyloguj</button>
@@ -42,7 +34,7 @@ const PageAdmin = async () => {
         <TableResults />
         <TableVotingList />
       </Suspense>
-    </>
+    </ProtectedRouteWrapper>
   );
 };
 
