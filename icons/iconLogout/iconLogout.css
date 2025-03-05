@@ -1,9 +1,9 @@
-.iconPdf {
-  mask-image: url("file-pdf-solid.svg");
+.iconLogout {
+  mask-image: url("right-from-bracket-solid.svg");
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
-  -webkit-mask-image: url("file-pdf-solid.svg");
+  -webkit-mask-image: url("right-from-bracket-solid.svg");
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
