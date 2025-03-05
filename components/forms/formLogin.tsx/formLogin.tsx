@@ -6,6 +6,7 @@ import InputsText from "@/components/inputs/inputsText";
 import { authClient } from "@/lib/auth-client";
 import { useActionState, useRef } from "react";
 import { useFormAction } from "react-router-dom";
+import { redirect, useRouter } from "next/navigation";
 
 const dataInputsLogin = [
   { label: "Login", name: "userName", placeholder: "Login" },
@@ -20,6 +21,8 @@ const FormLogin = () => {
   // const [state, loginAction] = useActionState(login, undefined);
 
   const formRef = useRef<HTMLFormElement>(null);
+
+  const router = useRouter();
   const funct = (ala: string) => {
     return ala;
   };
@@ -54,26 +57,63 @@ const FormLogin = () => {
   //   // console.log("", newVotingValues);
   // };
 
-  const clientAction = async (e: React.FormEvent<HTMLFormElement>) => {
+  // const clientAction = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+
+  //   // Validate payload
+  //   const payload = {
+  //     email: "test@example.com",
+  //     name: "test",
+  //     password: "password1234",
+  //     callbackURL: "/admin",
+  //   };
+
+  //   if (!payload.email || !payload.password || !payload.name) {
+  //     console.error("❌ Missing required fields:", payload);
+  //     return;
+  //   }
+
+  //   try {
+  //     const { data, error } = await authClient.signUp.email(payload, {
+  //       onRequest: ctx => console.log("🚀 Request sent", ctx),
+  //       onSuccess: ctx => {
+  //         router.push("/login/admin"), console.log("✅ Success!", ctx);
+  //       },
+  //       onError: ctx => console.error("❌ Error occurred", ctx),
+  //     });
+
+  //     if (error) {
+  //       console.error("Sign-up failed:", error);
+  //     } else {
+  //       console.log("Sign-up successful:", data);
+  //     }
+  //   } catch (error) {
+  //     console.error("Unexpected error during sign-up:", error);
+  //   }
+  // };
+
+  const login = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Validate payload
     const payload = {
       email: "test@example.com",
-      name: "test",
+      //  name: "test",
       password: "password1234",
       callbackURL: "/login/admin",
     };
 
-    if (!payload.email || !payload.password || !payload.name) {
+    if (!payload.email || !payload.password) {
       console.error("❌ Missing required fields:", payload);
       return;
     }
 
     try {
-      const { data, error } = await authClient.signUp.email(payload, {
+      const { data, error } = await authClient.signIn.email(payload, {
         onRequest: ctx => console.log("🚀 Request sent", ctx),
-        onSuccess: ctx => console.log("✅ Success!", ctx),
+        onSuccess: ctx => {
+          router.push("/login/admin"), console.log("✅ Success!", ctx);
+        },
         onError: ctx => console.error("❌ Error occurred", ctx),
       });
 
@@ -89,7 +129,7 @@ const FormLogin = () => {
 
   return (
     <form
-      onSubmit={clientAction}
+      onSubmit={login}
       ref={formRef}
       className="flex flex-col w-full mx-auto pb-16"
     >
