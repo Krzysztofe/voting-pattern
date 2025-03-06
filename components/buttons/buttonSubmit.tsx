@@ -7,20 +7,21 @@ type Props = {
   text: string;
   bacground?: string;
   textColor?: string;
+  loading?: boolean;
 };
 
 const ButtonSubmit = (props: Props) => {
   const { pending } = useFormStatus();
 
-
+  const isPending = props.loading ?? pending;
 
   return (
     <button
       disabled={pending}
-      className={`${props.bacground} text-base font-normal ${props.textColor} py-1 w-24 h-7 flex items-center justify-center`}
+      className={`${props.bacground} text-base font-normal ${props.textColor} py-1 w-24 h-7 flex items-center justify-center ml-auto mt-8 mr-24`}
     >
-      {pending ? (
-        <LoadingComponent color="text-dark" size="loading-sm" />
+      {isPending ? (
+        <LoadingComponent color="text-white" size="loading-sm" />
       ) : (
         props.text
       )}

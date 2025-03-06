@@ -2,10 +2,10 @@ import FormLogin from "@/components/forms/formLogin.tsx/formLogin";
 import InputsText from "@/components/inputs/inputsText";
 
 const dataInputsLogin = [
-  { label: "Login", name: "userName", placeholder: "Login" },
+  { label: "Email", name: "userEmail", placeholder: "email" },
   {
     label: "Hasło",
-    name: "userEmail",
+    name: "userPassword",
     placeholder: "Hasło",
   },
 ];
@@ -13,18 +13,11 @@ const dataInputsLogin = [
 const PageLogin = () => {
   return (
     <div className="flex justify-center h-screen items-center">
-      <FormLogin>
-        <InputsText
-          inputsData={dataInputsLogin}
-          errorMsg={{
-            userName: "www",
-            userEmail: "wwwwee",
-          }}
-        />
-      </FormLogin>
+      <FormLogin/>
+       
+     
     </div>
   );
 };
 
 export default PageLogin;
-

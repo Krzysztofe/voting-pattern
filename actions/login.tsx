@@ -1,37 +1,70 @@
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import { useState, useRef } from "react";
 
-export const login = async (event: React.FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
-  const payload = {
-    email: "test@example.com",
-    password: "password1234",
-    callbackURL: "/login/admin",
+export const useLogin = () => {
+  const [loginError, setLoginError] = useState("");
+  const [requestError, setRequestError] = useState("");
+  const [isLoading, setloading] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const loginAction = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!formRef.current) return;
+
+    const formData = new FormData(formRef.current);
+
+    const newVotingValues = {
+      email: formData.get("userEmail")?.toString().trim() || "",
+      password: formData.get("userPassword")?.toString().trim() || "",
+      callbackURL: "/login/admin",
+    };
+    setLoginError("");
+
+    // const payload = {
+    //   email: "test@example.come",
+    //   password: "password1234",
+    //   callbackURL: "/login/admin",
+    // };
+
+    if (!newVotingValues.email || !newVotingValues.password) {
+      setLoginError("Wypełnij pola");
+      return;
+    }
+
+    try {
+      setLoginError("");
+      setloading(true);
+
+      const { error } = await authClient.signIn.email(newVotingValues, {
+        onRequest: ctx => setloading(true),
+      });
+
+      if (
+        typeof error?.status === "number" &&
+        error.status >= 400 &&
+        error.status <= 499
+      ) {
+        setLoginError("Błędne hasło lub login");
+        setloading(false);
+        return;
+      }
+
+      if (error) throw new Error("");
+      setloading(false);
+    } catch (error: any) {
+      console.error("Błąd połączenia:", error);
+      setRequestError("Błąd. Odświerz stronę");
+      setloading(false);
+    }
   };
 
-  if (!payload.email || !payload.password) {
-    console.error(" Missing required fields:", payload);
-    return;
-  }
-
-  try {
-    const { data, error } = await authClient.signIn.email(payload, {
-      onRequest: ctx => console.log("? Request sent", ctx),
-      onSuccess: ctx => {
-        console.log("Success!");
-      },
-      onError: ctx => console.error("Error occurred", ctx),
-    });
-
-    if (error) {
-      console.error("Sign-in failed:", error);
-    } else {
-      console.log("Sign-in successful:");
-
-      // Redirect only in the server-side action
-      //   redirect("/login/admin"); // This should now work
-    }
-  } catch (error) {
-    console.error("Unexpected error during sign-in:", error);
-  }
+  return {
+    loginAction,
+    loginError,
+    isLoading,
+    requestError,
+    setRequestError,
+    formRef,
+  };
 };

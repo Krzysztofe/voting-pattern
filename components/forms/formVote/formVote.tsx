@@ -5,6 +5,8 @@ import InputsRadio from "@/components/inputs/inputsRadio";
 import InputsText from "@/components/inputs/inputsText";
 import RequestMessage from "./requestMessage";
 import useFormVoteSubmit from "./useFormVoteSubmit";
+import AdditionalErrors from "../additionalErrors";
+
 
 const dataInputsCandidates = [
   { value: "Blanka Hasterok", name: "candidateName" },
@@ -49,9 +51,8 @@ const FormVoteSubmition = () => {
         errorMsg={errorMsg}
         handleChange={handleChange}
       />
-      <div className="text-xs text-danger h-4 w-[50%] mx-auto">
-        {isUserRegistered}
-      </div>
+      <AdditionalErrors text={isUserRegistered} />
+
       <ButtonSubmit
         text="Zagłosuj"
         bacground="bg-accent"
