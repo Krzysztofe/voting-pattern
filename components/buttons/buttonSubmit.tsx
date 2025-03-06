@@ -17,7 +17,7 @@ const ButtonSubmit = (props: Props) => {
 
   return (
     <button
-      disabled={pending}
+      disabled={isPending}
       className={`${props.bacground} text-base font-normal ${props.textColor} py-1 w-24 h-7 flex items-center justify-center ml-auto mt-8 mr-24`}
     >
       {isPending ? (

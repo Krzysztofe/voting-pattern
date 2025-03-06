@@ -6,11 +6,12 @@ import RequestMessage from "../formVote/requestMessage";
 import AdditionalErrors from "../additionalErrors";
 
 const dataInputsLogin = [
-  { label: "Email", name: "userEmail", placeholder: "email" },
+  { label: "Email", name: "userEmail", placeholder: "Email", type: "email" },
   {
     label: "Hasło",
     name: "userPassword",
     placeholder: "Hasło",
+    type: "password"
   },
 ];
 

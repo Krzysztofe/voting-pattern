@@ -46,6 +46,7 @@ export const postVote = async (
     return { message: "Głos oddany pomyślnie" };
   } catch (error) {
     console.error("Error during vote submission: ", error);
-    return { message: "Błąd podczas oddawania głosu. Spróbuj ponownie" };
+
+    return { message: "Błąd. Spróbuj ponownie" };
   }
 };

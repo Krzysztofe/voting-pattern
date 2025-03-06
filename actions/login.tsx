@@ -50,7 +50,6 @@ export const useLogin = () => {
         return;
       }
 
-      if (error) throw new Error("");
       setloading(false);
     } catch (error: any) {
       console.error("Błąd połączenia:", error);

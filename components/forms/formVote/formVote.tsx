@@ -7,21 +7,25 @@ import RequestMessage from "./requestMessage";
 import useFormVoteSubmit from "./useFormVoteSubmit";
 import AdditionalErrors from "../additionalErrors";
 
-
 const dataInputsCandidates = [
   { value: "Blanka Hasterok", name: "candidateName" },
   { value: "Monika Kowalewska", name: "candidateName" },
 ];
 
 const dataInputsUser = [
-  { label: "Podaj swoje pierwsze imię", name: "userName", placeholder: "Imię" },
+  {
+    label: "Podaj swoje pierwsze imię",
+    name: "userName",
+    placeholder: "Imię",
+    type: "text",
+  },
   {
     label: "Podaj swoje nazwisko",
     name: "userSurname",
     placeholder: "Nazwisko",
+    type: "text",
   },
 ];
-
 
 const FormVoteSubmition = () => {
   const {

@@ -5,8 +5,8 @@ const HeaderFormPage = () => {
     <header className="py-4 px-6 text-xl font-bold border-b-8 border-bacground">
       Wybory Zakładowego Społecznego Inspektora Pracy w Amazon 22.03.2025
       <div className="text-sm font-normal">
-        Jeżeli jesteś zatrudniony w Amazon wpisz swoje dane i zaznacz wybraną
-        kandydaturę
+        Jeżeli jesteś zatrudniony w Amazon zaznacz wybraną kandydaturę i wpisz
+        swoje dane
       </div>
     </header>
   );
