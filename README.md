@@ -1,7 +1,6 @@
-http://vps-2c27257b.vps.ovh.ca:8080/ <br>
-http://vps-2c27257b.vps.ovh.ca:8080/login <br>
 
 
+## Vesion for users tests: <br> form http://vps-2c27257b.vps.ovh.ca:8080 <br/> admin http://vps-2c27257b.vps.ovh.ca:8080/login
 ## Features
 
 * Comunication with database - GET, POST
