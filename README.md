@@ -1,12 +1,37 @@
 http://vps-2c27257b.vps.ovh.ca:8080/ <br>
 http://vps-2c27257b.vps.ovh.ca:8080/login <br>
-better-auth <br>
-html2canvas-pro <br>
-jspdf <br>
 
-zod - client validation/server validation  <br>
-prisma <br>
-sqlite 
+
+## Features
+
+* Comunication with database - GET, POST
+* Auth 
+* Forms / validations
+* Tables
+* HTTP requests state messages for user
+* Creating a PDF with data stored in a database
+* RWD
+* Automatic logout after five minutes
+
+
+## Technologies
+
+* Tailwind / daisyUI
+* Next.js / TypeScript
+* Prisma
+* SQLite
+
+## Libraries
+
+* jsPDF
+* better-auth
+* html2canvas-pro
+* jspdf
+* zod - client validation/server validation
+
+
+
+ 
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
