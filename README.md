@@ -5,6 +5,11 @@ An full-stack application developed on behalf of a trade union for conducting el
 The frontend of the application is built using Next.js with TS, while the backend is implemented using Prisma and SQLite.
 
 
+ <div align="center">
+  <img src="https://github.com/user-attachments/assets/162225ad-168b-4e55-8402-9a40e334392a" alt="html5" width="400" height="400" /> 
+</div> 
+
+
 ## Vesion for users tests: <br> form http://vps-2c27257b.vps.ovh.ca:8080 <br/> admin http://vps-2c27257b.vps.ovh.ca:8080/login
 ## Features
 
