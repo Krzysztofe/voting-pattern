@@ -7,7 +7,7 @@ The frontend of the application is built using Next.js with TS, while the backen
 
 
  <div align="center">
-  <img src="https://github.com/user-attachments/assets/162225ad-168b-4e55-8402-9a40e334392a" alt="html5" width="400" height="400" /> 
+  <img src="https://github.com/user-attachments/assets/162225ad-168b-4e55-8402-9a40e334392a" alt="html5" width="400" height="350" /> 
 </div> 
 
 
@@ -15,7 +15,8 @@ The frontend of the application is built using Next.js with TS, while the backen
 ## Features
 
 * Comunication with database - GET, POST
-* Auth 
+* Auth
+* Pagination with dynamic routing
 * Forms / validations
 * Tables
 * HTTP requests state messages for user
