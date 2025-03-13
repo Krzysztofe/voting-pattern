@@ -1,4 +1,9 @@
 
+An application developed on behalf of a trade union for conducting elections among employees for the position of social labor inspector. Each employee can vote only once – duplicate entries of the same name and surname already present in the database will fail validation. After logging in, the administrator can view the voting results and has the option to export them to a PDF file.
+
+
+
+
 
 ## Vesion for users tests: <br> form http://vps-2c27257b.vps.ovh.ca:8080 <br/> admin http://vps-2c27257b.vps.ovh.ca:8080/login
 ## Features
