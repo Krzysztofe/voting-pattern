@@ -12,8 +12,6 @@ const getVotes = async () => {
     });
 
     
-
-    // const resp = await prisma.vote.findMany();
     if (!resp) {
       throw new Error("Error");
     }

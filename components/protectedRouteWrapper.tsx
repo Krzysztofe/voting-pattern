@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -16,7 +16,7 @@ const ProtectedRouteWrapper = async (props: Props) => {
     redirect("/login");
   }
 
-  return <div>{props.children}</div>;
+  return <React.Fragment>{props.children}</React.Fragment>;
 };
 
 export default ProtectedRouteWrapper;

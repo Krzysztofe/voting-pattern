@@ -9,18 +9,22 @@ import { Suspense } from "react";
 const PageAdmin = async () => {
   return (
     <ProtectedRouteWrapper>
-      <HeaderAdminPage />
+      <>
+        <HeaderAdminPage />
 
-      <Suspense
-        fallback={<LoadingComponent color="text-accent" size="loading-lg" />}
-      >
-        <PdfContentWrapper>
-          <TableResults />
-          <TableVotingList />
-        </PdfContentWrapper>
-        <TableResults />
-        <TableVotingList />
-      </Suspense>
+        <Suspense
+          fallback={<LoadingComponent color="text-accent" size="loading-lg" />}
+        >
+          <PdfContentWrapper>
+            <TableResults />
+            <TableVotingList />
+          </PdfContentWrapper>
+          <div className="pb-5">
+            <TableResults />
+            <TableVotingList />
+          </div>
+        </Suspense>
+      </>
     </ProtectedRouteWrapper>
   );
 };

@@ -3,7 +3,7 @@ import TableHeader from "./tableHeader";
 
 const TableVotingList = () => {
   return (
-    <table className="mx-auto my-5">
+    <table className="mx-auto mt-5">
       <TableHeader />
       <TableBody />
     </table>

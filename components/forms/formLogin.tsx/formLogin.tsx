@@ -6,12 +6,19 @@ import RequestMessage from "../formVote/requestMessage";
 import AdditionalErrors from "../additionalErrors";
 
 const dataInputsLogin = [
-  { label: "Email", name: "userEmail", placeholder: "Email", type: "email" },
+  {
+    label: "Email",
+    name: "userEmail",
+    placeholder: "Email",
+    type: "email",
+    defaultValue: "test@example.com",
+  },
   {
     label: "Hasło",
     name: "userPassword",
     placeholder: "Hasło",
-    type: "password"
+    type: "password",
+    defaultValue: "password1234",
   },
 ];
 
@@ -31,13 +38,7 @@ const FormLogin = () => {
       ref={formRef}
       className="flex flex-col w-full mx-auto pb-16"
     >
-      <InputsText
-        inputsData={dataInputsLogin}
-        errorMsg={{
-          userEmail: "test@example.com",
-          userPassword: "password1234",
-        }}
-      />
+      <InputsText inputsData={dataInputsLogin} />
 
       <AdditionalErrors text={loginError} />
 
