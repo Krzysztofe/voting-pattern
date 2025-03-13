@@ -1,5 +1,6 @@
+# Votting-pattern
 
-An full-stack application developed on behalf of a trade union for conducting elections among employees for the position of social labor inspector. Each employee can vote only once – duplicate entries of the same name and surname already present in the database will fail validation. After logging in, the administrator can view the voting results and has the option to export them to a PDF file.
+An commercial full-stack application developed on behalf of a trade union for conducting elections among employees for the position of social labor inspector. Each employee can vote only once – duplicate entries of the same name and surname already present in the database will fail validation. After logging in, the administrator can view the voting results and has the option to export them to a PDF file.
 
 
 The frontend of the application is built using Next.js with TS, while the backend is implemented using Prisma and SQLite.
