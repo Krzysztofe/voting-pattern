@@ -29,7 +29,7 @@ const PaginationControls = (props: Props) => {
         <IconLeft />
       </button>
       <div className="mx-3 my-2">
-        {page}/{Math.ceil(props.totalVotes / Number(perPage))}
+        {page} z {Math.ceil(props.totalVotes / Number(perPage))}
       </div>
 
       <button

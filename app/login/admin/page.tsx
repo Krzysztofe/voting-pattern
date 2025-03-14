@@ -39,7 +39,7 @@ const PageAdmin = async ({
             <TableBody start={start} perPage={Number(perPage)} />
           </table>
           <PaginationControls
-            hasNextPage={end > 0}
+            hasNextPage={end <= totalVotes}
             hasPrevPage={start > 0}
             totalVotes={totalVotes}
           />
