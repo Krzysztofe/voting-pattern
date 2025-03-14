@@ -1,6 +1,5 @@
 import { getVotesCash } from "@/actions/getVotes";
 
-import PaginationControls from "@/components/paginationControls";
 
 const TableBody = async (resp: any) => {
   const votes = await getVotesCash();

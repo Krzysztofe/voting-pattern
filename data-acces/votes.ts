@@ -1,31 +1,85 @@
+// import "server-only";
+// import { prisma } from "@/lib/db";
+// import { cache } from "react";
+// import { isAdminLogged } from "@/utils/isAdminLogged";
+
+// const getVotesSumm = async () => {
+//   await isAdminLogged();
+//   return await prisma.vote.count();
+// };
+
+// export const getVotesSummCash = cache(getVotesSumm);
+
+// const getCandidateVotesCount = async () => {
+//   await isAdminLogged();
+//   const groupedVotes = await prisma.vote.groupBy({
+//     by: ["candidateName"],
+//     _count: {
+//       candidateName: true,
+//     },
+//     orderBy: {
+//       candidateName: "asc",
+//     },
+//   });
+
+//   return groupedVotes.map(vote => ({
+//     candidateName: vote.candidateName,
+//     count: vote._count.candidateName,
+//   }));
+// };
+
+// export const getCandidateVotesCountCash = cache(getCandidateVotesCount);
+
 import "server-only";
 import { prisma } from "@/lib/db";
 import { cache } from "react";
 import { isAdminLogged } from "@/utils/isAdminLogged";
 
 const getVotesSumm = async () => {
-  await isAdminLogged();
-  return await prisma.vote.count();
+  try {
+    await isAdminLogged();
+    const totalVotes = await prisma.vote.count();
+
+    if (totalVotes === null || totalVotes === undefined) {
+      throw new Error("Failed to fetch total votes");
+    }
+
+    return { totalVotes };
+  } catch (error) {
+    console.error("Error in getVotesSumm:", error);
+    return { totalVotesError: "Błąd. Ponów prubę" };
+  }
 };
 
 export const getVotesSummCash = cache(getVotesSumm);
 
 const getCandidateVotesCount = async () => {
-  await isAdminLogged();
-  const groupedVotes = await prisma.vote.groupBy({
-    by: ["candidateName"],
-    _count: {
-      candidateName: true,
-    },
-    orderBy: {
-      candidateName: "asc",
-    },
-  });
+  try {
+    await isAdminLogged();
+    const groupedVotes = await prisma.vote.groupBy({
+      by: ["candidateName"],
+      _count: {
+        candidateName: true,
+      },
+      orderBy: {
+        candidateName: "asc",
+      },
+    });
 
-  return groupedVotes.map(vote => ({
-    candidateName: vote.candidateName,
-    count: vote._count.candidateName,
-  }));
+    if (!groupedVotes || groupedVotes.length === 0) {
+      throw new Error("No candidate votes found");
+    }
+
+    const candidatesSummary = groupedVotes.map(vote => ({
+      candidateName: vote.candidateName,
+      count: vote._count.candidateName,
+    }));
+
+    return { candidatesSummary };
+  } catch (error) {
+    console.error("Error in getCandidateVotesCount:", error);
+    return { candidatesSummaryError: "Błąd. Ponów prubę" };
+  }
 };
 
 export const getCandidateVotesCountCash = cache(getCandidateVotesCount);

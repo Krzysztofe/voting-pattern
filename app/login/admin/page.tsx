@@ -21,7 +21,7 @@ const PageAdmin = async ({
     tables = (
       <>
         <TableResults />
-        {/* <TableVotingList searchParams={searchParams} /> */}
+        <TableVotingList searchParams={searchParams} />
       </>
     );
   } else {
@@ -32,7 +32,6 @@ const PageAdmin = async ({
     <ProtectedRouteWrapper>
       <>
         <HeaderAdminPage />
-
         <Suspense
           fallback={<LoadingComponent color="text-accent" size="loading-lg" />}
         >
