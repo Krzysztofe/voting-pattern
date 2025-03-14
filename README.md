@@ -16,6 +16,7 @@ The frontend of the application is built using Next.js with TS, while the backen
 
 * Comunication with database - GET, POST
 * Auth
+* Protected Routes
 * Data Access Layer
 * Pagination with dynamic routing
 * Forms / validations
