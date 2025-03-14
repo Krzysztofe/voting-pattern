@@ -4,7 +4,7 @@ import TableHeader from "./tableHeader";
 import PaginationControls from "@/components/paginationControls";
 import { getPaginatedVotesCash } from "@/data-acces/votes";
 
-const TableVotingList = async ({
+const TableVotingUsers = async ({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -22,13 +22,13 @@ const TableVotingList = async ({
 
   return (
     <>
-      <table className="mx-auto mt-5">
+      {/* <table className="mx-auto mt-5">
         <TableHeader />
         <TableBody resp={paginatedVotes} />
       </table>
-      <PaginationControls hasNextPage={end > 0} hasPrevPage={start > 0} />
+      <PaginationControls hasNextPage={end > 0} hasPrevPage={start > 0} /> */}
     </>
   );
 };
 
-export default TableVotingList;
+export default TableVotingUsers;

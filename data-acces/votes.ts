@@ -15,7 +15,7 @@ const getVotesSumm = async () => {
     return { totalVotes };
   } catch (error) {
     console.error("Error in getVotesSumm:", error);
-    return { totalVotesError: "Błąd. Ponów prubę" };
+    return { totalVotesError: "Błąd. Ponów próbę" };
   }
 };
 
@@ -34,7 +34,7 @@ const getCandidateVotesCount = async () => {
       },
     });
 
-    if (!groupedVotes || groupedVotes.length === 0) {
+    if (!groupedVotes) {
       throw new Error("No candidate votes found");
     }
 
@@ -46,7 +46,7 @@ const getCandidateVotesCount = async () => {
     return { candidatesSummary };
   } catch (error) {
     console.error("Error in getCandidateVotesCount:", error);
-    return { candidatesSummaryError: "Błąd. Ponów prubę" };
+    return { candidatesSummaryError: "Błąd. Ponów próbę" };
   }
 };
 
@@ -54,6 +54,8 @@ export const getCandidateVotesCountCash = cache(getCandidateVotesCount);
 
 const getPaginatedVotes = async (start: number, perPage: number) => {
   await isAdminLogged();
+
+  // await new Promise(resolve => setTimeout(resolve, 5000));
 
   try {
     const paginatedVotes = await prisma.vote.findMany({
@@ -66,13 +68,13 @@ const getPaginatedVotes = async (start: number, perPage: number) => {
       take: Number(perPage),
     });
 
-    if (!paginatedVotes || paginatedVotes.length === 0) {
+    if (!paginatedVotes) {
       throw new Error("No paginated votes found");
     }
     return { paginatedVotes };
   } catch (error) {
     console.error("Error fetching paginated votes:", error);
-    return { paginatedVotesError: "Błąd. Ponów prubę" };
+    return { paginatedVotesError: "Błąd. Ponów próbę" };
   }
 };
 
