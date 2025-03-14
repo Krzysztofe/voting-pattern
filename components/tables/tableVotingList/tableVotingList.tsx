@@ -2,6 +2,7 @@ import { prisma } from "@/lib/db";
 import TableBody from "./tableBody";
 import TableHeader from "./tableHeader";
 import PaginationControls from "@/components/paginationControls";
+import { getPaginatedVotesCash } from "@/data-acces/votes";
 
 const TableVotingList = async ({
   searchParams,
@@ -14,23 +15,18 @@ const TableVotingList = async ({
   const start = (Number(page) - 1) * Number(perPage);
   const end = start + Number(perPage);
 
-  const resp = await prisma.vote.findMany({
-    orderBy: { userFullName: "asc" },
-    select: {
-      candidateName: true,
-      userFullName: true,
-    },
-    skip: start,
-    take: Number(perPage),
-  });
+  const { paginatedVotes, paginatedVotesError } = await getPaginatedVotesCash(
+    start,
+    Number(perPage)
+  );
 
   return (
     <>
       <table className="mx-auto mt-5">
         <TableHeader />
-        <TableBody resp={resp} />
+        <TableBody resp={paginatedVotes} />
       </table>
-      <PaginationControls hasNextPage={end>0} hasPrevPage={start > 0} />
+      <PaginationControls hasNextPage={end > 0} hasPrevPage={start > 0} />
     </>
   );
 };

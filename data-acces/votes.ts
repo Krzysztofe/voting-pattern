@@ -1,43 +1,11 @@
-// import "server-only";
-// import { prisma } from "@/lib/db";
-// import { cache } from "react";
-// import { isAdminLogged } from "@/utils/isAdminLogged";
-
-// const getVotesSumm = async () => {
-//   await isAdminLogged();
-//   return await prisma.vote.count();
-// };
-
-// export const getVotesSummCash = cache(getVotesSumm);
-
-// const getCandidateVotesCount = async () => {
-//   await isAdminLogged();
-//   const groupedVotes = await prisma.vote.groupBy({
-//     by: ["candidateName"],
-//     _count: {
-//       candidateName: true,
-//     },
-//     orderBy: {
-//       candidateName: "asc",
-//     },
-//   });
-
-//   return groupedVotes.map(vote => ({
-//     candidateName: vote.candidateName,
-//     count: vote._count.candidateName,
-//   }));
-// };
-
-// export const getCandidateVotesCountCash = cache(getCandidateVotesCount);
-
 import "server-only";
 import { prisma } from "@/lib/db";
 import { cache } from "react";
 import { isAdminLogged } from "@/utils/isAdminLogged";
 
 const getVotesSumm = async () => {
+  await isAdminLogged();
   try {
-    await isAdminLogged();
     const totalVotes = await prisma.vote.count();
 
     if (totalVotes === null || totalVotes === undefined) {
@@ -54,8 +22,8 @@ const getVotesSumm = async () => {
 export const getVotesSummCash = cache(getVotesSumm);
 
 const getCandidateVotesCount = async () => {
+  await isAdminLogged();
   try {
-    await isAdminLogged();
     const groupedVotes = await prisma.vote.groupBy({
       by: ["candidateName"],
       _count: {
@@ -83,3 +51,29 @@ const getCandidateVotesCount = async () => {
 };
 
 export const getCandidateVotesCountCash = cache(getCandidateVotesCount);
+
+const getPaginatedVotes = async (start: number, perPage: number) => {
+  await isAdminLogged();
+
+  try {
+    const paginatedVotes = await prisma.vote.findMany({
+      orderBy: { userFullName: "asc" },
+      select: {
+        candidateName: true,
+        userFullName: true,
+      },
+      skip: start,
+      take: Number(perPage),
+    });
+
+    if (!paginatedVotes || paginatedVotes.length === 0) {
+      throw new Error("No paginated votes found");
+    }
+    return { paginatedVotes };
+  } catch (error) {
+    console.error("Error fetching paginated votes:", error);
+    return { paginatedVotesError: "Błąd. Ponów prubę" };
+  }
+};
+
+export const getPaginatedVotesCash = cache(getPaginatedVotes);

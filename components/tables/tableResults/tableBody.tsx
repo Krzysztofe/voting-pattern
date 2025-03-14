@@ -1,5 +1,3 @@
-import { getVotesCash } from "@/actions/getVotes";
-import RequestMessage from "@/components/forms/formVote/requestMessage";
 import RequestErrorComponent from "@/components/requestErrorComponent";
 import {
   getCandidateVotesCountCash,
@@ -7,8 +5,6 @@ import {
 } from "@/data-acces/votes";
 
 const TableBody = async () => {
-  const votes = await getVotesCash();
-
   const { candidatesSummary, candidatesSummaryError } =
     await getCandidateVotesCountCash();
   const { totalVotes, totalVotesError } = await getVotesSummCash();

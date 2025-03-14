@@ -6,7 +6,7 @@ type Props = {
   setMessage: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const RequestMessage = (props: Props) => {
+const FormRequestMessage = (props: Props) => {
   const handleClick = () => {
     props.setMessage("");
   };
@@ -28,4 +28,4 @@ const RequestMessage = (props: Props) => {
   );
 };
 
-export default RequestMessage;
+export default FormRequestMessage;

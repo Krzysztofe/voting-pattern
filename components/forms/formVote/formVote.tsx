@@ -3,7 +3,7 @@
 import ButtonSubmit from "@/components/buttons/buttonSubmit";
 import InputsRadio from "@/components/inputs/inputsRadio";
 import InputsText from "@/components/inputs/inputsText";
-import RequestMessage from "./requestMessage";
+import FormRequestMessage from "./formRequestMessage";
 import useFormVoteSubmit from "./useFormVoteSubmit";
 import AdditionalErrors from "../additionalErrors";
 
@@ -63,7 +63,7 @@ const FormVoteSubmition = () => {
         textColor="text-white"
       />
       {responseMessage && (
-        <RequestMessage
+        <FormRequestMessage
           message={responseMessage}
           setMessage={setResponseMessage}
         />

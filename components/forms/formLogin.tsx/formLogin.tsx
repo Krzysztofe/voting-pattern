@@ -2,7 +2,7 @@
 import { useLogin } from "@/actions/login";
 import ButtonSubmit from "@/components/buttons/buttonSubmit";
 import InputsText from "@/components/inputs/inputsText";
-import RequestMessage from "../formVote/requestMessage";
+import RequestMessage from "../formVote/formRequestMessage";
 import AdditionalErrors from "../additionalErrors";
 
 const dataInputsLogin = [
