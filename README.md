@@ -16,6 +16,7 @@ The frontend of the application is built using Next.js with TS, while the backen
 
 * Comunication with database - GET, POST
 * Auth
+* Data Access Layer
 * Pagination with dynamic routing
 * Forms / validations
 * Tables
@@ -37,7 +38,6 @@ The frontend of the application is built using Next.js with TS, while the backen
 * jsPDF
 * better-auth
 * html2canvas-pro
-* jspdf
 * zod - client validation/server validation
 
 ## Prerequisites
