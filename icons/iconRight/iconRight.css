@@ -1,0 +1,18 @@
+.iconRight {
+  mask-image: url("angles-right-solid.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-image: url("angles-right-solid.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  width: 1rem;
+  height: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+.iconRight:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}

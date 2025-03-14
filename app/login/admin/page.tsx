@@ -6,7 +6,11 @@ import TableResults from "@/components/tables/tableResults/tableResults";
 import TableVotingList from "@/components/tables/tableVotingList/tableVotingList";
 import { Suspense } from "react";
 
-const PageAdmin = async () => {
+const PageAdmin = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
   return (
     <ProtectedRouteWrapper>
       <>
@@ -17,11 +21,11 @@ const PageAdmin = async () => {
         >
           <PdfContentWrapper>
             <TableResults />
-            <TableVotingList />
+            {/* <TableVotingList searchParams={searchParams} /> */}
           </PdfContentWrapper>
           <div className="pb-5">
             <TableResults />
-            <TableVotingList />
+            {/* <TableVotingList searchParams={searchParams} /> */}
           </div>
         </Suspense>
       </>
