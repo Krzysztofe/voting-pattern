@@ -52,10 +52,21 @@ const getCandidateVotesCount = async () => {
 
 export const getCandidateVotesCountCash = cache(getCandidateVotesCount);
 
-const getPaginatedVotes = async (start: number, perPage: number) => {
-  await isAdminLogged();
+type Vote = {
+  candidateName: string;
+  userFullName: string;
+};
 
-  // await new Promise(resolve => setTimeout(resolve, 5000));
+type GetPaginatedVotesResult = {
+  paginatedVotes?: Vote[];
+  paginatedVotesError?: string;
+};
+
+const getPaginatedVotes = async (
+  start: number,
+  perPage: number
+): Promise<GetPaginatedVotesResult> => {
+  await isAdminLogged();
 
   try {
     const paginatedVotes = await prisma.vote.findMany({

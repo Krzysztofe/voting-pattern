@@ -8,16 +8,16 @@ type Props = {
   hasNextPage: boolean;
   hasPrevPage: boolean;
   totalVotes: number;
+  perPage: number;
 };
 
 const PaginationControls = (props: Props) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const page = searchParams.get("page") ?? "1";
-  const perPage = searchParams.get("perPage") ?? "5";
 
   const handlePageChange = (newPage: number) => {
-    router.push(`/login/admin/?page=${newPage}&perPage=${perPage}`);
+    router.push(`/login/admin/?page=${newPage}`);
   };
 
   return (
@@ -29,7 +29,7 @@ const PaginationControls = (props: Props) => {
         <IconLeft />
       </button>
       <div className="mx-3 my-2">
-        {page} z {Math.ceil(props.totalVotes / Number(perPage))}
+        {page} z {Math.ceil(props.totalVotes / props.perPage)}
       </div>
 
       <button

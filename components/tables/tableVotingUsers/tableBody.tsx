@@ -1,4 +1,3 @@
-import { getVotesCash } from "@/actions/getVotes";
 import RequestErrorComponent from "@/components/requestErrorComponent";
 import { getPaginatedVotesCash } from "@/data-acces/votes";
 
@@ -20,25 +19,17 @@ const TableBody = async (props: Props) => {
   return (
     <>
       <tbody>
-        {paginatedVotes?.map(
-          (
-            {
-              candidateName,
-              userFullName,
-            }: { candidateName: any; userFullName: any },
-            idx: number
-          ) => {
-            return (
-              <tr key={userFullName}>
-                <td className="border border-accent px-2">
-                  {props.start + idx + 1}
-                </td>
-                <td className="border border-accent px-2">{userFullName}</td>
-                <td className="border border-accent px-2">{candidateName}</td>
-              </tr>
-            );
-          }
-        )}
+        {paginatedVotes?.map(({ candidateName, userFullName }, idx) => {
+          return (
+            <tr key={userFullName}>
+              <td className="border border-accent px-2">
+                {props.start + idx + 1}
+              </td>
+              <td className="border border-accent px-2">{userFullName}</td>
+              <td className="border border-accent px-2">{candidateName}</td>
+            </tr>
+          );
+        })}
       </tbody>
     </>
   );

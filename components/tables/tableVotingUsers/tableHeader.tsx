@@ -9,7 +9,7 @@ const TableHeader = () => {
           Nazwisko imię
         </th>
         <th className="text-start bg-accent text-white px-2 border border-accent border-l-white font-normal">
-          Głos
+          Głos na
         </th>
       </tr>
     </thead>
