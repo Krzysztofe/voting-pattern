@@ -10,6 +10,8 @@ import TableBody from "@/components/tables/tableVotingUsers/tableBody";
 import TableHeader from "@/components/tables/tableVotingUsers/tableHeader";
 import { getVotesSummCash } from "@/actions/data-acces/votes";
 import { Suspense } from "react";
+import { headerAdminHeight } from "@/data/numbers/dataNumbers";
+
 
 type Props = {
   searchParams: Promise<Record<string, string[] | undefined>>;
@@ -24,7 +26,7 @@ const PageAdmin = async (props: Props) => {
 
   const page = Number(Array.isArray(pageParam) ? pageParam[0] : pageParam) || 1;
 
-  const perPage = 20;
+  const perPage = 40;
   const totalPages = Math.ceil(totalVotes / perPage);
   const validPage = Math.min(page, totalPages);
   const startIdx = (validPage - 1) * perPage;
@@ -37,7 +39,7 @@ const PageAdmin = async (props: Props) => {
     return (
       <>
         <TableResults />
-        <table className="mx-auto mt-5">
+        <table className="mx-auto">
           <TableHeader />
           <TableBody startIdx={startIdx} perPage={perPage} />
         </table>
@@ -58,7 +60,12 @@ const PageAdmin = async (props: Props) => {
         fallback={<LoadingComponent color="text-accent" size="loading-lg" />}
       >
         <PdfContentWrapper>{renderTableContent()}</PdfContentWrapper>
-        <div className="pb-5">{renderTableContent()}</div>
+        <div
+          style={{ top: `${headerAdminHeight}` }}
+          className={`absolute pb-5 left-[50%] transform translate-x-[-50%]`}
+        >
+          {renderTableContent()}
+        </div>
       </Suspense>
     </ProtectedRouteWrapper>
   );

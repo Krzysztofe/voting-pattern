@@ -1,5 +1,6 @@
 "use client";
 
+import { headerAdminTop } from "@/data/numbers/dataNumbers";
 import IconPdf from "../../icons/iconPdf/iconPdf";
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
 const PdfIconContainer = (props: Props) => {
   return (
     <div
-      className="absolute left-[1rem] top-[1.9rem]"
+      className={`absolute left-[1rem] ${headerAdminTop}`}
       onClick={props.downloadPdf}
       onTouchStart={props.downloadPdf}
     >

@@ -22,17 +22,14 @@ const PdfContentWrapper = (props: Props) => {
   return (
     <>
       <div
-        className="z-10 absolute -left-full px-5 py-1"
-        style={{ fontSize: "3px" }}
+        className="-z-10 relative "
+        style={{ fontSize: "10px" }}
         ref={pdfRef}
       >
-        <div className="flex justify-between">
-          <div>Wyniki głosowania </div>
-          <div>
-            <div>Data: {date}</div>
-            <div>Godzina: {time}</div>
-          </div>
+        <div>
+          Wynik głosowania w dniu {date} o godzinie {time}
         </div>
+
         {props.children}
       </div>
       <PdfIconContainer downloadPdf={downloadPdf} />

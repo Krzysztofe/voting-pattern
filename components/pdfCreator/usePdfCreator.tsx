@@ -2,7 +2,6 @@ import html2canvas from "html2canvas-pro";
 import jsPDF from "jspdf";
 import { useRef } from "react";
 
-
 const usePdfCreator = () => {
   const pdfRef = useRef<HTMLDivElement>(null);
 
@@ -31,6 +30,9 @@ const usePdfCreator = () => {
       const marginTop = 5;
       const marginBottom = 5;
       const contentHeight = pdfHeight - marginTop - marginBottom;
+      const leftMargin = 40;
+      const rightMargin = 40;
+      const contentWidth = pdfWidth - leftMargin - rightMargin;
 
       let positionY = 0;
 
@@ -38,9 +40,9 @@ const usePdfCreator = () => {
         pdf.addImage(
           imageData,
           "PNG",
-          0,
+          leftMargin,
           marginTop - positionY,
-          pdfWidth,
+          contentWidth,
           scaledHeight
         );
 
