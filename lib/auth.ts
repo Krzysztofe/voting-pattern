@@ -1,4 +1,3 @@
-// import prisma from "@/prisma/prisma";
 import { prisma } from "@/lib/db";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";

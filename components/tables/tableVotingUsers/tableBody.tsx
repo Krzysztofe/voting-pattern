@@ -1,14 +1,14 @@
 import RequestErrorComponent from "@/components/requestErrorComponent";
-import { getPaginatedVotesCash } from "@/data-acces/votes";
+import { getPaginatedVotesCash } from "@/actions/data-acces/votes";
 
 type Props = {
-  start: number;
+  startIdx: number;
   perPage: number;
 };
 
 const TableBody = async (props: Props) => {
   const { paginatedVotes, paginatedVotesError } = await getPaginatedVotesCash(
-    props.start,
+    props.startIdx,
     props.perPage
   );
 
@@ -23,7 +23,7 @@ const TableBody = async (props: Props) => {
           return (
             <tr key={userFullName}>
               <td className="border border-accent px-2">
-                {props.start + idx + 1}
+                {props.startIdx + idx + 1}
               </td>
               <td className="border border-accent px-2">{userFullName}</td>
               <td className="border border-accent px-2">{candidateName}</td>

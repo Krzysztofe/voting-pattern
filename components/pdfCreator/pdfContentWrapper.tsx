@@ -10,7 +10,7 @@ type Props = {
 };
 
 const PdfContentWrapper = (props: Props) => {
-  const { download, pdfRef } = usePdfCreator();
+  const { downloadPdf, pdfRef } = usePdfCreator();
   const [date, setDate] = useState<string>("");
   const [time, setTime] = useState<string>("");
 
@@ -35,7 +35,7 @@ const PdfContentWrapper = (props: Props) => {
         </div>
         {props.children}
       </div>
-      <PdfIconContainer download={download} />
+      <PdfIconContainer downloadPdf={downloadPdf} />
     </>
   );
 };

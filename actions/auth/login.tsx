@@ -21,12 +21,6 @@ export const useLogin = () => {
     };
     setLoginError("");
 
-    // const payload = {
-    //   email: "test@example.come",
-    //   password: "password1234",
-    //   callbackURL: "/login/admin",
-    // };
-
     if (!newVotingValues.email || !newVotingValues.password) {
       setLoginError("Wypełnij pola");
       return;

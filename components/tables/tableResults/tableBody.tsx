@@ -2,7 +2,7 @@ import RequestErrorComponent from "@/components/requestErrorComponent";
 import {
   getCandidateVotesCountCash,
   getVotesSummCash,
-} from "@/data-acces/votes";
+} from "@/actions/data-acces/votes";
 
 const TableBody = async () => {
   const { candidatesSummary, candidatesSummaryError } =

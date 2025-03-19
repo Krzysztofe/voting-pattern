@@ -14,7 +14,15 @@ type Props = {
 const PaginationControls = (props: Props) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const page = searchParams.get("page") ?? "1";
+  const pageInParams = searchParams.get("page") ?? "1";
+  const totalPages = Math.ceil(props.totalVotes / props.perPage);
+
+  let page;
+  if (Number(pageInParams) > totalPages) {
+    page = totalPages;
+  } else {
+    page = searchParams.get("page") ?? "1";
+  }
 
   const handlePageChange = (newPage: number) => {
     router.push(`/login/admin/?page=${newPage}`);
