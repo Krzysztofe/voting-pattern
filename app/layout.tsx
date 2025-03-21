@@ -26,7 +26,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${geistMono.variable} bg-bacground text-textColor min-h-screen`}
       >
-        <main>
+        <main >
           <Wrapper>{children}</Wrapper>
         </main>
       </body>

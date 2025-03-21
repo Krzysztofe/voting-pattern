@@ -6,7 +6,7 @@ type Props = {
 
 const Wrapper = (props: Props) => {
   return (
-    <div className="relative first-line:w-100 max-w-[750px] min-h-screen mx-auto bg-white">
+    <div className="relative max-w-[750px] min-h-screen mx-auto bg-white">
       {props.children}
     </div>
   );

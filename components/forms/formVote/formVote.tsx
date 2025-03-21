@@ -6,13 +6,22 @@ import InputsText from "@/components/inputs/inputsText";
 import FormRequestMessage from "./formRequestMessage";
 import useFormVoteSubmit from "./useFormVoteSubmit";
 import AdditionalErrors from "../additionalErrors";
+import { FormVoteSchemaModel } from "@/components/forms/formVote/useFormVoteSubmit";
 
-const dataInputsCandidates = [
+const dataInputsCandidates: {
+  value: string;
+  name: keyof FormVoteSchemaModel;
+}[] = [
   { value: "Blanka Hasterok", name: "candidateName" },
   { value: "Monika Kowalewska", name: "candidateName" },
 ];
 
-const dataInputsUser = [
+const dataInputsUser: {
+  label: string;
+  name: keyof FormVoteSchemaModel;
+  placeholder: string;
+  type: string;
+}[] = [
   {
     label: "Podaj swoje pierwsze imię",
     name: "userName",
@@ -29,31 +38,31 @@ const dataInputsUser = [
 
 const FormVoteSubmition = () => {
   const {
-    errorMsg,
     isUserRegistered,
     responseMessage,
     setResponseMessage,
-    formRef,
-    clientAction,
-    handleChange,
+    handleVoteSubmit,
+    register,
+    handleSubmit,
+    errorMsg,
+    isSubmitting,
   } = useFormVoteSubmit();
 
   return (
     <form
-      onSubmit={clientAction}
-      ref={formRef}
+      onSubmit={handleSubmit(handleVoteSubmit)}
       className="flex flex-col w-full mx-auto pb-16"
     >
       <InputsRadio
         headerText="Kandydatury"
         inputsData={dataInputsCandidates}
-        errorMsg={errorMsg.candidateName}
-        handleChange={handleChange}
+        errorMsg={errorMsg.candidateName || ""}
+        register={register}
       />
       <InputsText
         inputsData={dataInputsUser}
         errorMsg={errorMsg}
-        handleChange={handleChange}
+        register={register}
       />
       <AdditionalErrors text={isUserRegistered} />
 
@@ -61,6 +70,7 @@ const FormVoteSubmition = () => {
         text="Zagłosuj"
         bacground="bg-accent"
         textColor="text-white"
+        loading={isSubmitting}
       />
       {responseMessage && (
         <FormRequestMessage

@@ -12,7 +12,6 @@ import { getVotesSummCash } from "@/actions/data-acces/votes";
 import { Suspense } from "react";
 import { headerAdminHeight } from "@/data/numbers/dataNumbers";
 
-
 type Props = {
   searchParams: Promise<Record<string, string[] | undefined>>;
 };
@@ -24,7 +23,7 @@ const PageAdmin = async (props: Props) => {
 
   const pageParam = (await props.searchParams).page ?? "1";
 
-  const page = Number(Array.isArray(pageParam) ? pageParam[0] : pageParam) || 1;
+  const page = Number(pageParam) || 1;
 
   const perPage = 40;
   const totalPages = Math.ceil(totalVotes / perPage);
@@ -59,10 +58,18 @@ const PageAdmin = async (props: Props) => {
       <Suspense
         fallback={<LoadingComponent color="text-accent" size="loading-lg" />}
       >
-        <PdfContentWrapper>{renderTableContent()}</PdfContentWrapper>
+        <div
+          style={{
+            paddingBottom: `${totalVotes * 0.9}rem`,
+          }}
+        >
+          <PdfContentWrapper>{renderTableContent()}</PdfContentWrapper>
+        </div>
+
         <div
           style={{ top: `${headerAdminHeight}` }}
-          className={`absolute pb-5 left-[50%] transform translate-x-[-50%]`}
+          className={`
+           absolute  pb-5 left-[50%] transform translate-x-[-50%] w-full`}
         >
           {renderTableContent()}
         </div>

@@ -1,7 +1,9 @@
 import { z } from "zod";
 
 export const formVoteSchema = z.object({
-  candidateName: z.string({ message: "Wymagane" }),
+  candidateName: z
+    .string({ message: "Wymagane" })
+    .min(1, { message: "Wymagane" }),
   userName: z
     .string({ message: "Min. 3 znaki" })
     .min(3, { message: "Min. 3 znaki" })

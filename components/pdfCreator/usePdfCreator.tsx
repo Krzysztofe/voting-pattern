@@ -10,7 +10,11 @@ const usePdfCreator = () => {
     if (!element) return;
 
     try {
-      const canvas = await html2canvas(element, { scale: 4 });
+      const canvas = await html2canvas(element, {
+        scale: 4,
+        logging: true,
+        backgroundColor: null,
+      });
       const imageData = canvas.toDataURL("image/png");
 
       const pdf = new jsPDF({

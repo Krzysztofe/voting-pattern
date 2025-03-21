@@ -1,23 +1,20 @@
-"use client"
+"use client";
 
 import FormInputsWrapper from "../forms/formVote/formInputsWrapper";
+import { UseFormRegister } from "react-hook-form";
+import { FormVoteSchemaModel } from "@/components/forms/formVote/useFormVoteSubmit";
 
 type Props = {
   headerText: string;
   inputsData: {
     value: string;
-    name: string;
+    name: keyof FormVoteSchemaModel;
   }[];
-  errorMsg: string;
-  handleChange: (name: string) => void;
+  errorMsg?: string;
+  register?: UseFormRegister<FormVoteSchemaModel>;
 };
 
-const InputsRadio = ({
-  headerText,
-  inputsData,
-  errorMsg,
-  handleChange,
-}: Props) => {
+const InputsRadio = ({ headerText, inputsData, errorMsg, register }: Props) => {
   return (
     <FormInputsWrapper>
       <div className="text-lg text-accent">{headerText}</div>
@@ -27,9 +24,8 @@ const InputsRadio = ({
             <input
               type="radio"
               value={value}
-              name={name}
               className="radio-xs checked:bg-accent mr-2"
-              onChange={() => handleChange(name)}
+              {...(register ? register(name) : {})}
             />
             <span>{value}</span>
           </label>

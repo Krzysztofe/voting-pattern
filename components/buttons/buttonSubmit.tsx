@@ -8,6 +8,7 @@ type Props = {
   bacground?: string;
   textColor?: string;
   loading?: boolean;
+
 };
 
 const ButtonSubmit = (props: Props) => {
