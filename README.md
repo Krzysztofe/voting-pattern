@@ -40,6 +40,9 @@ https://vps-2c27257b.vps.ovh.ca/
 * better-auth
 * html2canvas-pro
 * zod - client validation/server validation
+  
+## Hooks
+* useState, 
 
 ## Prerequisites
 * Before getting started, make sure you have the Node.js and npm or yarn
