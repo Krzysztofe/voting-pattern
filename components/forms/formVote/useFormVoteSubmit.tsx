@@ -30,6 +30,9 @@ const useFormVoteSubmit = () => {
   const [isUserRegistered, setIsUserRegistered] = useState<string>("");
   const [responseMessage, setResponseMessage] = useState<string>("");
 
+
+
+  
   const {
     register,
     handleSubmit,
