@@ -21,6 +21,8 @@ export const useLogin = () => {
     };
     setLoginError("");
 
+    console.log('',newVotingValues)
+
     if (!newVotingValues.email || !newVotingValues.password) {
       setLoginError("Wypełnij pola");
       return;

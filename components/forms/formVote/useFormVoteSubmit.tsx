@@ -44,7 +44,7 @@ const useFormVoteSubmit = () => {
 
   const handleVoteSubmit = async (data: FormVoteSchemaModel) => {
     const resp = await postVote(data);
-
+console.log('',data)
     if (resp?.error) {
       setErrorMsg(resp.error);
       setIsUserRegistered("");
