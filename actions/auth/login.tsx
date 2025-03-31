@@ -1,39 +1,43 @@
 import { authClient } from "@/lib/auth-client";
 import { useState, useRef } from "react";
+import { useForm } from "react-hook-form";
+
+type DefaultValuesModel = {
+  userEmail: string;
+  userPassword: string;
+};
 
 export const useLogin = () => {
   const [loginError, setLoginError] = useState("");
   const [requestError, setRequestError] = useState("");
   const [isLoading, setloading] = useState(false);
-  const formRef = useRef<HTMLFormElement>(null);
 
-  const loginAction = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      userEmail: "test@example.com",
+      userPassword: "password1234",
+    },
+  });
 
-    if (!formRef.current) return;
+  const loginAction = async (data: DefaultValuesModel) => {
 
-    const formData = new FormData(formRef.current);
-
-    const newVotingValues = {
-      email: formData.get("userEmail")?.toString().trim() || "",
-      password: formData.get("userPassword")?.toString().trim() || "",
-      callbackURL: "/login/admin",
-    };
     setLoginError("");
 
-    console.log('',newVotingValues)
-
-    if (!newVotingValues.email || !newVotingValues.password) {
+    if (!data.userEmail || !data.userPassword) {
       setLoginError("Wypełnij pola");
       return;
     }
-
+    const newValues = {
+      email: data.userEmail?.toString().trim() || "",
+      password: data.userPassword?.toString().trim() || "",
+      callbackURL: "/login/admin",
+    };
     try {
       setLoginError("");
       setloading(true);
 
-      const { error } = await authClient.signIn.email(newVotingValues, {
-        onRequest: ctx => setloading(true),
+      const { error } = await authClient.signIn.email(newValues, {
+        onRequest: (ctx) => setloading(true),
       });
 
       if (
@@ -55,11 +59,12 @@ export const useLogin = () => {
   };
 
   return {
+    register,
     loginAction,
+    handleSubmit,
     loginError,
     isLoading,
     requestError,
     setRequestError,
-    formRef,
   };
 };

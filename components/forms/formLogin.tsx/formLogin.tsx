@@ -29,16 +29,16 @@ const FormLogin = () => {
     isLoading,
     requestError,
     setRequestError,
-    formRef,
+    handleSubmit,
+    register,
   } = useLogin();
 
   return (
     <form
-      onSubmit={loginAction}
-      ref={formRef}
+      onSubmit={handleSubmit(loginAction)}
       className="flex flex-col w-full mx-auto pb-16"
     >
-      <InputsText inputsData={dataInputsLogin} />
+      <InputsText inputsData={dataInputsLogin} register={register} />
 
       <AdditionalErrors text={loginError} />
 

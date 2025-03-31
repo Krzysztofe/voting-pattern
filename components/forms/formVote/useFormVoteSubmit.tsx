@@ -30,9 +30,6 @@ const useFormVoteSubmit = () => {
   const [isUserRegistered, setIsUserRegistered] = useState<string>("");
   const [responseMessage, setResponseMessage] = useState<string>("");
 
-
-
-  
   const {
     register,
     handleSubmit,
@@ -47,7 +44,7 @@ const useFormVoteSubmit = () => {
 
   const handleVoteSubmit = async (data: FormVoteSchemaModel) => {
     const resp = await postVote(data);
-console.log('',data)
+
     if (resp?.error) {
       setErrorMsg(resp.error);
       setIsUserRegistered("");
