@@ -31,6 +31,7 @@ const PageAdmin = async (props: Props) => {
   const startIdx = (validPage - 1) * perPage;
   const endIndex = startIdx + perPage;
 
+
   const renderTableContent = () => {
     if (totalVotesError) return <RequestErrorComponent />;
     if (!totalVotes) return <NoRecordsComponent />;
@@ -60,7 +61,7 @@ const PageAdmin = async (props: Props) => {
       >
         <div
           style={{
-            paddingBottom: `${totalVotes * 0.9}rem`,
+            paddingBottom: `${(totalVotes - startIdx) * 0.6}rem`,
           }}
         >
           <PdfContentWrapper>{renderTableContent()}</PdfContentWrapper>

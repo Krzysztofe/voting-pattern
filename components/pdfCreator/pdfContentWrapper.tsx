@@ -23,7 +23,7 @@ const PdfContentWrapper = (props: Props) => {
     <>
       <PdfIconContainer downloadPdf={downloadPdf} />
       <div
-        className=" relative -z-10"
+        className="relative -z-10"
         style={{ fontSize: "0.5rem", top: "0" }}
         ref={pdfRef}
       >
