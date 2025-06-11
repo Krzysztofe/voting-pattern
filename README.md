@@ -20,7 +20,7 @@ The frontend of the application is built using Next.js with TS, while the backen
 * Data Access Layer
 * Pagination with dynamic routing
 * Forms / validations
-* Tables
+* Table
 * HTTP requests state messages for user
 * Creating a PDF with data stored in a database
 * RWD
