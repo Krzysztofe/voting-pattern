@@ -2,6 +2,9 @@
 
 import FormInputsWrapper from "../forms/formVote/formInputsWrapper";
 import { FormVoteSchemaModel } from "@/components/forms/formVote/useFormVoteSubmit";
+import { UseFormRegister } from "react-hook-form";
+
+
 
 type Props = {
   inputsData: {
@@ -12,7 +15,7 @@ type Props = {
     defaultValue?: string;
   }[];
   errorMsg?: Partial<Record<keyof FormVoteSchemaModel, string>>;
-  register?: any;
+  register?:  UseFormRegister<any>;
 };
 
 const InputsText = ({ inputsData, errorMsg = {}, register }: Props) => {

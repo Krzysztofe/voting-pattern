@@ -37,10 +37,12 @@ const useFormVoteSubmit = () => {
     reset,
   } = useForm<FormVoteSchemaModel>({ resolver: zodResolver(formVoteSchema) });
 
+  const errorKeysCount = Object.keys(errors).length;
+
   useEffect(() => {
     const transformed = transformHookErrors(errors);
     setErrorMsg(transformed);
-  }, [Object.keys(errors).length]);
+  }, [errorKeysCount]);
 
   const handleVoteSubmit = async (data: FormVoteSchemaModel) => {
     const resp = await postVote(data);

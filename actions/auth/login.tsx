@@ -1,5 +1,5 @@
 import { authClient } from "@/lib/auth-client";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 type DefaultValuesModel = {
