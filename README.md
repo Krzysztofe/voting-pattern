@@ -42,7 +42,7 @@ The frontend of the application is built using Next.js with TS, while the backen
 * zod - client validation/server validation
   
 ## Hooks
-* useState, 
+* useState, useEffect, useForm, useFormStatus, useRouter, useSearchParams, useRef
 
 ## Prerequisites
 * Before getting started, make sure you have the Node.js and npm or yarn
