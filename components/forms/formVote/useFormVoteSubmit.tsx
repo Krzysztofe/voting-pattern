@@ -42,7 +42,7 @@ const useFormVoteSubmit = () => {
   useEffect(() => {
     const transformed = transformHookErrors(errors);
     setErrorMsg(transformed);
-  }, [errorKeysCount]);
+  }, [errorKeysCount, errors]);
 
   const handleVoteSubmit = async (data: FormVoteSchemaModel) => {
     const resp = await postVote(data);
