@@ -11,7 +11,7 @@ The frontend of the application is built using Next.js with TS, while the backen
 </div> 
 
 
-## Vesion for users tests: <br> form http://vps-2c27257b.vps.ovh.ca:8090/ <br/> admin http://vps-2c27257b.vps.ovh.ca:8090/login
+## Vesion for users tests: <br> form https://voting-pattern.vercel.app/ <br/> admin https://voting-pattern.vercel.app/login
 ## Features
 
 * Comunication with database - GET, POST
