@@ -1,4 +1,5 @@
 import FormLogin from "@/components/forms/formLogin.tsx/formLogin";
+import SignUp from "@/components/SignUp";
 
 const PageLogin = () => {
   return (
