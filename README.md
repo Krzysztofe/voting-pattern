@@ -1,6 +1,6 @@
-# Votting-pattern
+# Voting-pattern
 
-An commercial full-stack application developed on behalf of a trade union for conducting elections among employees for the position of social labor inspector. Each employee can vote only once – duplicate entries of the same name and surname already present in the database will fail validation. After logging in, the administrator can view the voting results and has the option to export them to a PDF file.
+An commercial full-stack application developed on behalf of a trade union for conducting elections among employees for the position of social labor inspector. Each employee can vote only once – duplicate entries of the same name and surname already present in the database will fail validation. After logging in, the administrator can view the voting results and has the option to export them to a PDF file. The form was used for voting that took place in April 2025.
 
 
 The frontend of the application is built using Next.js with TS, while the backend is implemented using Prisma and SQLite.
@@ -9,9 +9,9 @@ The frontend of the application is built using Next.js with TS, while the backen
  <div align="center">
   <img src="https://github.com/user-attachments/assets/162225ad-168b-4e55-8402-9a40e334392a" alt="html5" width="400" height="350" /> 
 </div> 
-https://vps-2c27257b.vps.ovh.ca/
 
-## Vesion for users tests: <br> form http://vps-2c27257b.vps.ovh.ca:8080 <br/> admin http://vps-2c27257b.vps.ovh.ca:8080/login
+
+## Vesion for users tests: <br> form http://vps-2c27257b.vps.ovh.ca:8090/ <br/> admin http://vps-2c27257b.vps.ovh.ca:8090/login
 ## Features
 
 * Comunication with database - GET, POST
@@ -20,7 +20,7 @@ https://vps-2c27257b.vps.ovh.ca/
 * Data Access Layer
 * Pagination with dynamic routing
 * Forms / validations
-* Tables
+* Table
 * HTTP requests state messages for user
 * Creating a PDF with data stored in a database
 * RWD
@@ -42,7 +42,7 @@ https://vps-2c27257b.vps.ovh.ca/
 * zod - client validation/server validation
   
 ## Hooks
-* useState, 
+* useState, useEffect, useForm, useFormStatus, useRouter, useSearchParams, useRef
 
 ## Prerequisites
 * Before getting started, make sure you have the Node.js and npm or yarn
